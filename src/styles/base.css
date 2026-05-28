@@ -1,0 +1,436 @@
+/* ═══════════════════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════════════════ */
+:root {
+  color: #1a1a1a;
+  background: #f0ede8;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   APP CHROME
+═══════════════════════════════════════════════════════════ */
+.app {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.page-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: start;
+  max-width: 794px;
+  margin: 0 auto 18px;
+}
+
+.page-tool-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
+.print-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.775rem;
+  color: #6b7280;
+}
+
+.print-controls label {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.print-controls button {
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  padding: 4px 11px;
+}
+
+.template-switcher {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 0.775rem;
+  color: #6b7280;
+}
+
+.template-switcher select {
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  color: #374151;
+  padding: 4px 9px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CV DOCUMENT SHELL
+═══════════════════════════════════════════════════════════ */
+.cv-document {
+  max-width: 794px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    0 12px 40px rgba(0, 0, 0, 0.07);
+  padding: 52px 58px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════════════════ */
+h1 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 7px;
+  margin-bottom: 18px;
+}
+
+h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 1px;
+}
+
+.headline {
+  font-size: 0.975rem;
+  font-weight: 400;
+  color: #6b7280;
+  margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT DETAILS
+═══════════════════════════════════════════════════════════ */
+.contact-details {
+  font-style: normal;
+  display: grid;
+  gap: 2px;
+  text-align: right;
+  font-size: 0.8rem;
+  color: #6b7280;
+  align-content: start;
+  padding-top: 5px;
+}
+
+.contact-details a {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: #1d4e4f;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SUMMARY
+═══════════════════════════════════════════════════════════ */
+.summary {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #374151;
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════════════════════════ */
+.cv-section {
+  padding-top: 26px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   EMPLOYMENT
+═══════════════════════════════════════════════════════════ */
+.role-list {
+  display: grid;
+  gap: 20px;
+}
+
+.role-group {
+  padding-top: 18px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.role-group:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.duration {
+  font-size: 0.775rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.muted {
+  color: #9ca3af;
+  font-size: 0.82rem;
+}
+
+.company-description {
+  font-size: 0.845rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 5px 0 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   POSITIONS
+═══════════════════════════════════════════════════════════ */
+.position-list {
+  list-style: none;
+  margin: 8px 0 12px;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.position-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 0.845rem;
+}
+
+.position-row strong {
+  font-weight: 500;
+  color: #374151;
+}
+
+.position-row span {
+  color: #9ca3af;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 0.775rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BULLETS
+═══════════════════════════════════════════════════════════ */
+.bullet-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 16px;
+}
+
+.bullet-list p {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #374151;
+  margin-bottom: 3px;
+}
+
+.empty-state {
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   EXPANDABLE DETAILS
+═══════════════════════════════════════════════════════════ */
+details {
+  margin: 8px 0 2px;
+}
+
+summary {
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: #1d4e4f;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   EDUCATION
+═══════════════════════════════════════════════════════════ */
+.education-item + .education-item {
+  margin-top: 13px;
+}
+
+.education-item h3 {
+  font-size: 0.875rem;
+}
+
+.education-item p {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT PREVIEW MODE
+═══════════════════════════════════════════════════════════ */
+.is-print-preview .page-tools,
+.is-print-preview .web-only {
+  display: none;
+}
+
+.is-print-preview .cv-document {
+  box-shadow: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .app {
+    padding: 12px;
+  }
+
+  .page-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .page-tool-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .cv-document {
+    padding: 28px 24px;
+  }
+
+  .contact-details {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .role-header {
+    flex-wrap: wrap;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════════════════ */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 18mm;
+  }
+
+  :root {
+    font-size: 10.5pt;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .app {
+    padding: 0;
+  }
+
+  .page-tools,
+  .web-only {
+    display: none !important;
+  }
+
+  .cv-document {
+    max-width: none;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 22pt;
+  }
+
+  h2 {
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+  }
+
+  .cv-section {
+    padding-top: 18px;
+  }
+
+  .role-list {
+    gap: 14px;
+  }
+
+  .role-group {
+    break-inside: avoid;
+    padding-top: 13px;
+  }
+
+  .position-list {
+    margin: 5px 0 9px;
+  }
+
+  .bullet-list {
+    gap: 4px;
+  }
+
+  .bullet-list p {
+    margin-bottom: 1px;
+  }
+}

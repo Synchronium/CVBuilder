@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:wght@700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   DIVIDED TEMPLATE
+═══════════════════════════════════════════════════════════ */
+
+/* ── Header ─────────────────────────────────────────────── */
+.template-divided .divided-header {
+  padding-bottom: 10px;
+}
+
+.template-divided h1 {
+  margin-bottom: 2px;
+}
+
+.template-divided .divided-meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.template-divided .headline {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.template-divided .divided-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.template-divided .divided-contact-item {
+  display: flex;
+  align-items: center;
+}
+
+.template-divided .divided-contact-item::before {
+  content: "·";
+  margin: 0 8px;
+  color: #d1d5db;
+}
+
+.template-divided .divided-contact-item:first-child::before {
+  display: none;
+}
+
+.template-divided .divided-contact a {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.template-divided .divided-contact a:hover {
+  color: #1d4e4f;
+}
+
+/* ── Summary ─────────────────────────────────────────────── */
+.template-divided .divided-summary {
+  border-left: 3px solid #1d4e4f;
+  padding-left: 16px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #374151;
+}
+
+/* ── Section label (inverted) ────────────────────────────── */
+.template-divided .section-label {
+  display: block;
+  background: #111;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  margin: 16px -58px 0;
+}
+
+/* ── Role entry (split layout) ───────────────────────────── */
+.template-divided .divided-role {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 0 36px;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 20px 0;
+}
+
+.template-divided .divided-role:first-of-type {
+  border-top: 1px solid #f3f4f6;
+}
+
+.template-divided .divided-role-meta h3 {
+  font-size: 0.95rem;
+  margin-bottom: 1px;
+}
+
+.template-divided .divided-role-duration {
+  font-size: 0.775rem;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.template-divided .divided-positions {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: grid;
+  gap: 5px;
+}
+
+.template-divided .divided-positions li {
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.template-divided .divided-positions li:not(:first-child) {
+  font-size: 0.775rem;
+  opacity: 0.65;
+}
+
+.template-divided .divided-positions strong {
+  display: block;
+  font-weight: 500;
+  color: #374151;
+}
+
+.template-divided .divided-positions span {
+  color: #9ca3af;
+  font-size: 0.775rem;
+}
+
+.template-divided .divided-role-description {
+  font-size: 0.74rem;
+  font-style: italic;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+
+.template-divided .divided-role-context-text {
+  font-size: 0.74rem;
+  font-style: italic;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
+
+.template-divided .divided-tech {
+  font-size: 0.775rem;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.template-divided .divided-role-content {
+  padding-top: 2px;
+}
+
+.template-divided .divided-role:has(+ .section-label),
+.template-divided .divided-education:has(+ .section-label) {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* ── Education (same split pattern) ─────────────────────── */
+.template-divided .divided-education {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 0 36px;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 16px 0;
+}
+
+.template-divided .divided-education:first-of-type {
+  border-top: 1px solid #f3f4f6;
+}
+
+.template-divided .divided-education-meta {
+  font-size: 0.845rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.template-divided .divided-education-years {
+  font-size: 0.775rem;
+  color: #9ca3af;
+}
+
+.template-divided .divided-education-detail h3 {
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.template-divided .divided-education-detail p {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ── Interests ───────────────────────────────────────────── */
+.template-divided .divided-interests {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 0 36px;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 16px 0;
+  border-top: 1px solid #f3f4f6;
+}
+
+.template-divided .divided-interests p {
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .template-divided .divided-role,
+  .template-divided .divided-education,
+  .template-divided .divided-interests {
+    grid-template-columns: 1fr;
+    gap: 12px 0;
+  }
+
+  .template-divided .section-label {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+
+}
+
+/* ── Print ───────────────────────────────────────────────── */
+@media print {
+  .template-divided {
+    font-size: 9.5pt;
+  }
+
+  .template-divided .divided-header {
+    padding-bottom: 4px;
+  }
+
+  .template-divided .divided-meta-row {
+    gap: 10px;
+  }
+
+  .template-divided .divided-summary {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    line-height: 1.45;
+  }
+
+  .template-divided .section-label {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    padding: 4px 8px;
+    break-after: avoid;
+  }
+
+  .template-divided .divided-role,
+  .template-divided .divided-education,
+  .template-divided .divided-interests {
+    grid-template-columns: 155px 1fr;
+    gap: 0 22px;
+    padding: 10px 0;
+  }
+
+  .template-divided .divided-role-meta h3 {
+    font-size: 0.82rem;
+  }
+
+  .template-divided .divided-role-duration {
+    margin-bottom: 6px;
+  }
+
+  .template-divided .divided-positions {
+    gap: 1px;
+    margin-bottom: 8px;
+  }
+
+  .template-divided .divided-positions strong {
+    font-size: 0.73rem;
+    font-weight: 500;
+  }
+
+  .template-divided .divided-positions span {
+    font-size: 0.69rem;
+  }
+
+  .template-divided .divided-role--condensed .divided-role-description,
+  .template-divided .divided-role--condensed .divided-tech {
+    display: none;
+  }
+
+  .template-divided .divided-tech {
+    padding-top: 6px;
+    font-size: 0.7rem;
+  }
+
+  .template-divided .bullet-list {
+    gap: 2px;
+  }
+
+  .template-divided .bullet-list p {
+    font-size: 0.81rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .template-divided .divided-interests p {
+    font-size: 0.8rem;
+  }
+
+  .template-divided .divided-education {
+    padding: 4px 0;
+  }
+
+  .template-divided .divided-interests {
+    display: block;
+    padding: 6px 0;
+  }
+
+  .template-divided .divided-interests > div:first-child {
+    display: none;
+  }
+}

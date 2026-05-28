@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:wght@700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   TWO-COLUMN TEMPLATE
+═══════════════════════════════════════════════════════════ */
+.template-two-column {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+}
+
+.template-sidebar {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  padding-right: 34px;
+  border-right: 1px solid #e9ebed;
+}
+
+.template-main {
+  padding-left: 34px;
+}
+
+.sidebar-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-header h1 {
+  font-size: 1.65rem;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.sidebar-header .headline {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.template-sidebar .contact-details {
+  text-align: left;
+  font-size: 0.775rem;
+}
+
+.template-sidebar h2 {
+  margin-bottom: 10px;
+}
+
+.template-sidebar .summary {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+.template-sidebar .cv-section {
+  padding-top: 0;
+}
+
+.template-main .cv-section {
+  padding-top: 0;
+}
+
+@media (max-width: 680px) {
+  .template-two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .template-sidebar {
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 22px;
+  }
+
+  .template-main {
+    padding-left: 0;
+  }
+}
+
+@media print {
+  .template-two-column {
+    font-size: 9.5pt;
+    grid-template-columns: 168px 1fr;
+  }
+
+  .template-sidebar {
+    padding-right: 24px;
+    gap: 12px;
+  }
+
+  .template-main {
+    padding-left: 24px;
+  }
+
+  .template-two-column .role-group {
+    break-inside: auto;
+  }
+
+  .template-two-column .bullet-list {
+    gap: 2px;
+  }
+
+  .template-two-column .bullet-list p {
+    font-size: 0.81rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .template-two-column .role-group--condensed .company-description {
+    display: none;
+  }
+}

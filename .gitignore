@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.vite/
+*.local
+.vscode/
+
+data/
+!data/base.cv.example.json
+
+# Local Claude Code settings — contains machine-specific permissions
+.claude/settings.local.json

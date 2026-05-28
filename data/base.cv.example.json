@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "source": {
+      "type": "manual",
+      "file": "base.cv.example.json",
+      "extractedAt": "2026-01-01"
+    },
+    "defaultLocale": "en-GB",
+    "notes": [
+      "Example CV with fictional data. Demonstrates schema structure, career progression, and formatting conventions.",
+      "Replace all content with your own. Stable bullet IDs are used by variants to override or reorder bullets without duplicating the whole file."
+    ]
+  },
+  "person": {
+    "id": "alex-morgan",
+    "name": "Alex Morgan",
+    "headline": "Engineering Manager | Technical Leader",
+    "contact": {
+      "email": "alex.morgan@example.com",
+      "phone": "+44 (0)7700 900123",
+      "linkedin": "https://www.linkedin.com/in/alex-morgan-example/",
+      "address": {
+        "line1": "12 Example Street",
+        "locality": "Bristol",
+        "region": "Bristol",
+        "postcode": "BS1 1AA",
+        "country": "UK"
+      }
+    },
+    "workAuthorisation": "Full right to work in the UK"
+  },
+  "summary": "Engineering Manager with a decade of experience building and leading software teams. Started as a junior web developer, grew through senior IC roles at a fast-growing analytics startup, and now leads cross-functional product teams. I combine hands-on technical depth with a focus on coaching, delivery, and commercial outcomes.",
+  "roles": [
+    {
+      "id": "clockwork-software",
+      "company": {
+        "name": "Clockwork Software Ltd",
+        "description": "Clockwork builds field service management software for trades and facilities businesses, helping thousands of engineers schedule, dispatch, and invoice from a single platform.",
+        "websites": [
+          {
+            "label": "clockworksoftware.com",
+            "url": "https://www.example.com"
+          }
+        ]
+      },
+      "positions": [
+        {
+          "id": "clockwork-engineering-manager",
+          "title": "Engineering Manager",
+          "start": "2022-03",
+          "scope": "Leading two cross-functional product teams, owning engineering hiring, and contributing to technical strategy alongside the CTO."
+        },
+        {
+          "id": "clockwork-senior-software-engineer",
+          "title": "Senior Software Engineer",
+          "start": "2020-06",
+          "end": "2022-02",
+          "scope": "Hands-on senior engineer on the core product team, with growing informal leadership responsibilities before moving into management."
+        }
+      ],
+      "bullets": [
+        {
+          "id": "clockwork-team-scope",
+          "text": "Manage *two cross-functional product teams totalling 12 engineers*, spanning frontend, backend, and QA disciplines."
+        },
+        {
+          "id": "clockwork-revenue-impact",
+          "text": "Engineering org responsible for a core product generating *£8m ARR*, with the team delivering two major platform expansions that opened new market segments in the last 18 months."
+        },
+        {
+          "id": "clockwork-technical-strategy",
+          "text": "Defined and drove a migration from a monolithic Rails application to a service-oriented architecture, reducing deployment risk and enabling teams to ship independently."
+        },
+        {
+          "id": "clockwork-hiring",
+          "text": "Grew the engineering team from 7 to 12 over 18 months, designing the interview process and sourcing strategy from scratch."
+        },
+        {
+          "id": "clockwork-coaching",
+          "text": "Promoted two engineers from Mid to Senior and supported one Senior into a Lead role within 18 months through structured coaching and regular feedback."
+        },
+        {
+          "id": "clockwork-performance-management",
+          "text": "Owned the full engineering performance management lifecycle, including promotion decisions, performance improvement plans, and one redundancy."
+        }
+      ],
+      "tech": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Ruby on Rails",
+        "PostgreSQL",
+        "AWS",
+        "Terraform"
+      ],
+      "interactive": {
+        "context": "Current role spanning engineering management, technical strategy, hiring, and delivery across two product teams."
+      }
+    },
+    {
+      "id": "foundry-analytics",
+      "company": {
+        "name": "Foundry Analytics",
+        "description": "Foundry built self-serve data pipeline tooling for analytics and data engineering teams, helping businesses move data between sources without writing custom ETL code.",
+        "websites": [
+          {
+            "label": "foundryanalytics.io",
+            "url": "https://www.example.com"
+          }
+        ]
+      },
+      "product": "Foundry Pipeline",
+      "positions": [
+        {
+          "id": "foundry-senior-engineer",
+          "title": "Senior Full Stack Engineer",
+          "start": "2019-01",
+          "end": "2020-05",
+          "scope": "One of the most senior engineers in a team of eight, with informal technical leadership and mentoring responsibilities alongside hands-on delivery."
+        },
+        {
+          "id": "foundry-engineer",
+          "title": "Full Stack Engineer",
+          "start": "2017-04",
+          "end": "2018-12",
+          "scope": "Joined as an early engineer and grew with the product, taking on increasing ownership of key subsystems."
+        }
+      ],
+      "bullets": [
+        {
+          "id": "foundry-connector-framework",
+          "text": "Designed and built the connector framework that powered *90% of customer integrations*, reducing the time to add a new data source from weeks to days."
+        },
+        {
+          "id": "foundry-performance",
+          "text": "Reduced pipeline processing latency by *60%* through query optimisation, worker concurrency improvements, and smarter batching strategies."
+        },
+        {
+          "id": "foundry-onboarding-dashboard",
+          "text": "Led the build of a new customer onboarding dashboard from discovery to launch, cutting time-to-first-pipeline from an average of 11 days to under 3."
+        },
+        {
+          "id": "foundry-mentoring",
+          "text": "Mentored two junior engineers through weekly 1:1s and code review, both promoted to mid-level within a year."
+        }
+      ],
+      "tech": [
+        "Python",
+        "Django",
+        "React",
+        "Celery",
+        "Redis",
+        "PostgreSQL",
+        "Google Cloud Platform"
+      ],
+      "interactive": {
+        "context": "Early engineering role at a data tooling startup, growing from engineer to most senior IC before moving on."
+      }
+    },
+    {
+      "id": "pixel-and-paper",
+      "condensed": true,
+      "company": {
+        "name": "Pixel & Paper Ltd",
+        "description": "A Bristol-based digital agency delivering web and product work for clients in retail, media, and professional services.",
+        "websites": []
+      },
+      "positions": [
+        {
+          "id": "pixel-paper-web-developer",
+          "title": "Web Developer",
+          "start": "2014-09",
+          "end": "2017-03",
+          "scope": "First professional role after graduating, building client websites and internal tools across a range of industries."
+        }
+      ],
+      "bullets": [
+        {
+          "id": "pixel-paper-client-work",
+          "text": "Delivered web projects for clients across retail, media, and professional services, covering frontend development, CMS integration, and basic infrastructure setup."
+        }
+      ],
+      "tech": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP",
+        "WordPress",
+        "MySQL"
+      ],
+      "interactive": {
+        "context": "First professional engineering role at a digital agency after graduating."
+      }
+    }
+  ],
+  "education": [
+    {
+      "id": "bristol-computer-science",
+      "qualification": "BSc Computer Science",
+      "grade": "2:1",
+      "institution": "University of Bristol",
+      "start": "2011",
+      "end": "2014"
+    }
+  ],
+  "interests": "Open source contributor; trail running and cycling; amateur woodworker."
+}

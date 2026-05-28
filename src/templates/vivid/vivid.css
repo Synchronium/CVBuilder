@@ -1,0 +1,316 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   VIVID TEMPLATE
+═══════════════════════════════════════════════════════════ */
+
+.template-vivid {
+  --accent: #e85d04;
+  --dark: #0f172a;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.template-vivid h1 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--dark);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.template-vivid .vivid-rule {
+  height: 5px;
+  background: var(--accent);
+  margin-bottom: 14px;
+}
+
+.template-vivid .vivid-header-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.template-vivid .vivid-headline {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.template-vivid .vivid-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.template-vivid .vivid-contact > * + *::before {
+  content: "·";
+  margin: 0 8px;
+  color: #d1d5db;
+}
+
+.template-vivid .vivid-contact a {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.template-vivid .vivid-contact a:hover {
+  color: var(--accent);
+}
+
+/* ── Summary ─────────────────────────────────────────────── */
+.template-vivid .vivid-summary {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #374151;
+  border-left: 4px solid var(--accent);
+  padding-left: 16px;
+  margin: 0;
+}
+
+/* ── Section headings ────────────────────────────────────── */
+.template-vivid .vivid-section {
+  margin-top: 28px;
+}
+
+.template-vivid h2 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--dark);
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+/* ── Role list ───────────────────────────────────────────── */
+.template-vivid .vivid-role-list {
+  display: grid;
+  gap: 22px;
+}
+
+.template-vivid .vivid-role {
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.template-vivid .vivid-role:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.template-vivid .vivid-role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.template-vivid h3 {
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 2px;
+  letter-spacing: 0;
+}
+
+.template-vivid .vivid-duration {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.template-vivid .vivid-company-desc {
+  font-size: 0.82rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 4px 0 8px;
+}
+
+/* ── Positions ───────────────────────────────────────────── */
+.template-vivid .vivid-positions {
+  display: grid;
+  gap: 3px;
+  margin: 8px 0 10px;
+}
+
+.template-vivid .vivid-position {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 0.845rem;
+}
+
+.template-vivid .vivid-position-title {
+  font-weight: 500;
+  color: #374151;
+}
+
+.template-vivid .vivid-position--current .vivid-position-title {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.template-vivid .vivid-position-date {
+  color: #9ca3af;
+  font-size: 0.775rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.template-vivid .vivid-position:not(:first-child) {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ── Tech ────────────────────────────────────────────────── */
+.template-vivid .vivid-tech {
+  font-size: 0.775rem;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* ── Lower sections (education + interests) ──────────────── */
+.template-vivid .vivid-lower {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+  align-items: start;
+}
+
+.template-vivid .vivid-lower .vivid-section {
+  margin-top: 28px;
+}
+
+.template-vivid .vivid-education-item + .vivid-education-item {
+  margin-top: 12px;
+}
+
+.template-vivid .vivid-education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.template-vivid .vivid-education-header h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.template-vivid .vivid-years {
+  font-size: 0.775rem;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.template-vivid .vivid-qualification {
+  font-size: 0.82rem;
+  color: #374151;
+  margin: 2px 0 1px;
+}
+
+.template-vivid .vivid-grade {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.template-vivid .vivid-interests {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .template-vivid h1 {
+    font-size: 2.2rem;
+  }
+
+  .template-vivid .vivid-lower {
+    grid-template-columns: 1fr;
+  }
+
+  .template-vivid .vivid-role-header {
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Print ───────────────────────────────────────────────── */
+@media print {
+  .template-vivid {
+    font-size: 9.5pt;
+  }
+
+  .template-vivid h1 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+  }
+
+  .template-vivid .vivid-rule {
+    height: 4px;
+    margin-bottom: 10px;
+  }
+
+  .template-vivid .vivid-header-meta {
+    margin-bottom: 12px;
+  }
+
+  .template-vivid .vivid-summary {
+    line-height: 1.45;
+  }
+
+  .template-vivid .vivid-section {
+    margin-top: 20px;
+  }
+
+  .template-vivid h2 {
+    font-size: 1.15rem;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+
+  .template-vivid .vivid-role-list {
+    gap: 14px;
+  }
+
+  .template-vivid .vivid-role {
+    padding-top: 12px;
+  }
+
+  .template-vivid .vivid-positions {
+    margin: 5px 0 7px;
+  }
+
+  .template-vivid .bullet-list {
+    gap: 2px;
+  }
+
+  .template-vivid .bullet-list p {
+    font-size: 0.81rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .template-vivid .vivid-lower {
+    gap: 0 28px;
+  }
+
+  .template-vivid .vivid-role--condensed .vivid-company-desc {
+    display: none;
+  }
+}
