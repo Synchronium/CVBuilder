@@ -3,7 +3,6 @@ import { CVPage } from "./components/CVPage";
 import { resolveCv } from "./data/resolveCv";
 import { getVariantNames, loadVariantData } from "./data/variants";
 import {
-  defaultTemplateId,
   getTemplate,
   getTemplateOptions,
   type TemplateId
@@ -22,6 +21,18 @@ export function App() {
   );
   const template = getTemplate(templateId);
 
+  // If the URL requested an unknown template, getInitialTemplateId() fell back
+  // to the default; reflect that correction in the URL (side effect kept out of
+  // the render-path state initializer).
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("template");
+    if (requested && requested !== templateId) {
+      setUrlParam("template", templateId);
+    }
+    // Run once on mount to reconcile the initial URL.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     if (variantId === null) {
       setVariantData(null);
@@ -35,7 +46,7 @@ export function App() {
   const handleTemplateChange = (nextTemplateId: string) => {
     const nextTemplate = getTemplate(nextTemplateId);
     setUrlParam("template", nextTemplate.id);
-    setTemplateId(nextTemplate.id as TemplateId);
+    setTemplateId(nextTemplate.id);
   };
 
   const handleVariantChange = (nextVariantId: string | null) => {
@@ -73,13 +84,7 @@ function getInitialTemplateId(): TemplateId {
   const requestedTemplate = new URLSearchParams(window.location.search).get(
     "template"
   );
-  const template = getTemplate(requestedTemplate);
-
-  if (requestedTemplate && template.id !== requestedTemplate) {
-    setUrlParam("template", defaultTemplateId);
-  }
-
-  return template.id as TemplateId;
+  return getTemplate(requestedTemplate).id;
 }
 
 function setUrlParam(param: string, value: string) {

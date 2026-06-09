@@ -5,7 +5,7 @@ import {
   type Role,
   cvSchema
 } from "./schemas";
-import { calculateCompanyDuration, formatDateRange } from "./duration";
+import { calculateCompanyDuration, compareYearMonth, formatDateRange } from "./duration";
 
 export type PositionViewModel = Position & {
   dateRange: string;
@@ -50,7 +50,7 @@ function resolveRole(role: Role, today: Date): RoleViewModel {
         dateRange: formatDateRange(position.start, position.end),
         isCurrent: !position.end
       }))
-      .sort((a, b) => (a.start < b.start ? 1 : -1)),
+      .sort((a, b) => compareYearMonth(b.start, a.start)),
     duration: calculateCompanyDuration(role.positions, today)
   };
 }

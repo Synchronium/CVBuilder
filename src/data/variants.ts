@@ -12,7 +12,9 @@ export function getVariantNames(): string[] {
 }
 
 export async function loadVariantData(name: string): Promise<unknown> {
-  const key = Object.keys(variantModules).find((p) => p.endsWith(`/${name}.cv.json`));
+  const key = Object.keys(variantModules).find(
+    (p) => variantNameFromPath(p) === name
+  );
   if (!key) throw new Error(`Variant "${name}" not found`);
   return variantModules[key]();
 }

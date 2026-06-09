@@ -15,9 +15,14 @@ const slug = (title: string) => `${title.toLowerCase().replace(/\s+/g, "-")}-hea
 
 export function Section({ title, variant = "heading", className, children }: SectionProps) {
   if (variant === "label") {
+    // Rendered as a fragment (not a <section>) so templates can keep the label
+    // and the content blocks as siblings, which Divided's CSS relies on. The
+    // banner doubles as a level-2 heading for assistive tech.
     return (
       <>
-        <span className="cv-section-label">{title}</span>
+        <span className="cv-section-label" role="heading" aria-level={2}>
+          {title}
+        </span>
         {children}
       </>
     );

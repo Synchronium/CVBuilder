@@ -5,8 +5,10 @@ coverage/
 *.local
 .vscode/
 
-data/
-!data/base.cv.example.json
+# Top-level CV data only — anchored with a leading slash so this does NOT
+# also match src/data/ (resolver, schemas, tests).
+/data/
+!/data/base.cv.example.json
 
 # Local Claude Code settings — contains machine-specific permissions
 .claude/settings.local.json

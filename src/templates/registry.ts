@@ -29,16 +29,25 @@ export const templates = {
 
 export type TemplateId = keyof typeof templates;
 
+/**
+ * A registry entry with `id` narrowed to a known `TemplateId`. The `satisfies`
+ * clause above widens the literal `id` values to `string`, so we re-narrow `id`
+ * here using the (un-widened) object keys.
+ */
+export type RegisteredTemplate = Omit<(typeof templates)[TemplateId], "id"> & {
+  id: TemplateId;
+};
+
 export const defaultTemplateId: TemplateId = "classic";
 
-export function getTemplate(templateId: string | null): CvTemplate {
+export function getTemplate(templateId: string | null): RegisteredTemplate {
   if (templateId && templateId in templates) {
-    return templates[templateId as TemplateId];
+    return templates[templateId as TemplateId] as RegisteredTemplate;
   }
 
-  return templates[defaultTemplateId];
+  return templates[defaultTemplateId] as RegisteredTemplate;
 }
 
-export function getTemplateOptions(): CvTemplate[] {
-  return Object.values(templates);
+export function getTemplateOptions(): RegisteredTemplate[] {
+  return Object.values(templates) as RegisteredTemplate[];
 }
