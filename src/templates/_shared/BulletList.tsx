@@ -1,5 +1,5 @@
-import type { Bullet } from "../data/schemas";
-import { parseInline } from "../utils/parseInline";
+import type { Bullet } from "../../data/schemas";
+import { parseInline } from "../../utils/parseInline";
 
 type BulletListProps = {
   bullets: Bullet[];

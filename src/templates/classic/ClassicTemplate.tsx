@@ -1,9 +1,9 @@
 import "./classic.css";
-import { EducationBlock } from "../../components/EducationBlock";
-import { EmploymentSection } from "../../components/EmploymentSection";
-import { InterestsBlock } from "../../components/InterestsBlock";
-import { ProfileHeader } from "../../components/ProfileHeader";
 import type { TemplateProps } from "../types";
+import { ClassicHeader } from "./ClassicHeader";
+import { ClassicExperience } from "./ClassicExperience";
+import { ClassicEducation } from "./ClassicEducation";
+import { ClassicInterests } from "./ClassicInterests";
 
 export function ClassicTemplate({ cv }: TemplateProps) {
   return (
@@ -11,12 +11,12 @@ export function ClassicTemplate({ cv }: TemplateProps) {
       className="cv-document template template-classic"
       aria-label="Curriculum vitae"
     >
-      <ProfileHeader person={cv.person} summary={cv.summary} />
-      <EmploymentSection roles={cv.roles} />
+      <ClassicHeader person={cv.person} summary={cv.summary} />
+      <ClassicExperience roles={cv.roles} />
 
       <div className="cv-section-grid">
-        <EducationBlock education={cv.education} />
-        <InterestsBlock interests={cv.interests} />
+        <ClassicEducation education={cv.education} />
+        <ClassicInterests interests={cv.interests} />
       </div>
     </article>
   );

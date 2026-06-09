@@ -3,7 +3,7 @@
 /* ═══════════════════════════════════════════════════════════
    CLASSIC TEMPLATE
 ═══════════════════════════════════════════════════════════ */
-.profile-header {
+.classic-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px 48px;
@@ -12,7 +12,7 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.profile-header .summary {
+.classic-header .cv-summary {
   grid-column: 1 / -1;
   margin-top: 6px;
 }
@@ -43,7 +43,7 @@
     padding-bottom: 14px;
   }
 
-  .template-classic .role-group {
+  .template-classic .cv-role {
     break-inside: auto;
   }
 
@@ -57,7 +57,7 @@
     margin-bottom: 0;
   }
 
-  .template-classic .role-group--condensed .company-description {
+  .template-classic .cv-role--condensed .cv-role__description {
     display: none;
   }
 }

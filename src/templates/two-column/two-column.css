@@ -33,12 +33,12 @@
   margin-bottom: 4px;
 }
 
-.sidebar-header .headline {
+.sidebar-header .cv-headline {
   font-size: 0.8rem;
   margin-bottom: 0;
 }
 
-.template-sidebar .contact-details {
+.template-sidebar .cv-contact {
   text-align: left;
   font-size: 0.775rem;
 }
@@ -47,7 +47,7 @@
   margin-bottom: 10px;
 }
 
-.template-sidebar .summary {
+.template-sidebar .cv-summary {
   font-size: 0.82rem;
   line-height: 1.6;
   margin-top: 0;
@@ -93,7 +93,7 @@
     padding-left: 24px;
   }
 
-  .template-two-column .role-group {
+  .template-two-column .cv-role {
     break-inside: auto;
   }
 
@@ -107,7 +107,7 @@
     margin-bottom: 0;
   }
 
-  .template-two-column .role-group--condensed .company-description {
+  .template-two-column .cv-role--condensed .cv-role__description {
     display: none;
   }
 }
