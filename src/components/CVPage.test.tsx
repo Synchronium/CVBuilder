@@ -6,8 +6,14 @@ import { CVPage } from "./CVPage";
 import { resolveCv } from "../data/resolveCv";
 import { getTemplate, getTemplateOptions } from "../templates/registry";
 
-function TestHarness() {
-  const [printMode, setPrintMode] = useState(false);
+function TestHarness({
+  initialPrintMode = false,
+  variantError = null
+}: {
+  initialPrintMode?: boolean;
+  variantError?: string | null;
+} = {}) {
+  const [printMode, setPrintMode] = useState(initialPrintMode);
   const [templateId, setTemplateId] = useState("classic");
   const cv = resolveCv(undefined, new Date(Date.UTC(2026, 4, 23)));
   const template = getTemplate(templateId);
@@ -29,6 +35,7 @@ function TestHarness() {
       selectedTemplateId={template.id}
       variantNames={[]}
       selectedVariantId={null}
+      variantError={variantError}
       printMode={printMode}
       onTemplateChange={handleTemplateChange}
       onVariantChange={() => {}}
@@ -56,5 +63,31 @@ describe("CVPage", () => {
 
     expect(document.querySelector(".template-two-column")).toBeInTheDocument();
     expect(window.location.search).toBe("?template=two-column");
+  });
+
+  it("shows a variant load error as an alert", () => {
+    render(<TestHarness variantError={'Could not load variant "missing".'} />);
+
+    const alert = screen.getByRole("alert");
+    expect(alert).toHaveTextContent('Could not load variant "missing".');
+  });
+
+  it("does not show the exit-preview button outside preview mode", () => {
+    render(<TestHarness initialPrintMode={false} />);
+
+    expect(
+      screen.queryByRole("button", { name: "Exit preview" })
+    ).not.toBeInTheDocument();
+  });
+
+  it("offers an exit-preview button that leaves print mode", async () => {
+    const user = userEvent.setup();
+    render(<TestHarness initialPrintMode={true} />);
+
+    expect(document.querySelector(".is-print-preview")).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Exit preview" }));
+
+    expect(document.querySelector(".is-print-preview")).not.toBeInTheDocument();
   });
 });

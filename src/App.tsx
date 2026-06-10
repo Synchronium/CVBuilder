@@ -14,8 +14,9 @@ export function App() {
     getInitialVariantId(variantNames)
   );
   const [variantData, setVariantData] = useState<unknown | null>(null);
+  const [variantError, setVariantError] = useState<string | null>(null);
   const templateOptions = useMemo(() => getTemplateOptions(), []);
-  const [printMode, setPrintMode] = useState(false);
+  const [printMode, setPrintMode] = useState<boolean>(() => getInitialPrintMode());
   const [templateId, setTemplateId] = useState<TemplateId>(() =>
     getInitialTemplateId()
   );
@@ -36,9 +37,28 @@ export function App() {
   useEffect(() => {
     if (variantId === null) {
       setVariantData(null);
+      setVariantError(null);
       return;
     }
-    loadVariantData(variantId).then(setVariantData).catch(console.error);
+
+    let cancelled = false;
+    setVariantError(null);
+    loadVariantData(variantId)
+      .then((data) => {
+        if (!cancelled) setVariantData(data);
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        console.error(error);
+        setVariantData(null);
+        setVariantError(
+          `Could not load variant "${variantId}". Showing the base CV instead.`
+        );
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, [variantId]);
 
   const cv = useMemo(() => resolveCv(variantData ?? undefined), [variantData]);
@@ -58,6 +78,15 @@ export function App() {
     setVariantId(nextVariantId);
   };
 
+  const handlePrintModeChange = (enabled: boolean) => {
+    if (enabled) {
+      setUrlParam("print", "1");
+    } else {
+      removeUrlParam("print");
+    }
+    setPrintMode(enabled);
+  };
+
   return (
     <CVPage
       cv={cv}
@@ -66,10 +95,11 @@ export function App() {
       selectedTemplateId={template.id}
       variantNames={variantNames}
       selectedVariantId={variantId}
+      variantError={variantError}
       printMode={printMode}
       onTemplateChange={handleTemplateChange}
       onVariantChange={handleVariantChange}
-      onPrintModeChange={setPrintMode}
+      onPrintModeChange={handlePrintModeChange}
     />
   );
 }
@@ -85,6 +115,10 @@ function getInitialTemplateId(): TemplateId {
     "template"
   );
   return getTemplate(requestedTemplate).id;
+}
+
+function getInitialPrintMode(): boolean {
+  return new URLSearchParams(window.location.search).get("print") === "1";
 }
 
 function setUrlParam(param: string, value: string) {

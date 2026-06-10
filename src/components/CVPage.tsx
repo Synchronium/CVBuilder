@@ -11,6 +11,7 @@ type CVPageProps = {
   selectedTemplateId: string;
   variantNames: string[];
   selectedVariantId: string | null;
+  variantError: string | null;
   printMode: boolean;
   onTemplateChange: (templateId: string) => void;
   onVariantChange: (variantId: string | null) => void;
@@ -24,6 +25,7 @@ export function CVPage({
   selectedTemplateId,
   variantNames,
   selectedVariantId,
+  variantError,
   printMode,
   onTemplateChange,
   onVariantChange,
@@ -51,6 +53,25 @@ export function CVPage({
           />
         </div>
       </div>
+
+      {variantError ? (
+        <p className="page-notice page-notice--error web-only" role="alert">
+          {variantError}
+        </p>
+      ) : null}
+
+      {/* Visible only in on-screen preview; hidden in the real printed PDF so it
+          never appears in the output. Lets a ?print=1 link be dismissed even
+          though the main toolbar is hidden in preview. */}
+      {printMode ? (
+        <button
+          type="button"
+          className="print-preview-exit"
+          onClick={() => onPrintModeChange(false)}
+        >
+          Exit preview
+        </button>
+      ) : null}
 
       <Template cv={cv} />
     </main>

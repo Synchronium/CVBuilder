@@ -324,11 +324,81 @@ summary {
 }
 
 /* ═══════════════════════════════════════════════════════════
+   APP ERROR (render-time failure caught by ErrorBoundary)
+═══════════════════════════════════════════════════════════ */
+.app-error {
+  max-width: 794px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 32px 36px;
+}
+
+.app-error h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.app-error__detail {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #fef2f2;
+  border-radius: 6px;
+  color: #991b1b;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE NOTICES (e.g. variant load failure)
+═══════════════════════════════════════════════════════════ */
+.page-notice {
+  max-width: 794px;
+  margin: 0 auto 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.page-notice--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+/* ═══════════════════════════════════════════════════════════
    PRINT PREVIEW MODE
 ═══════════════════════════════════════════════════════════ */
 .is-print-preview .page-tools,
 .is-print-preview .web-only {
   display: none;
+}
+
+/* The exit-preview button is shown ONLY while previewing on screen, and is
+   removed from the real printed output by the @media print rules below — so it
+   is deliberately not a .web-only element (those are hidden in preview too). */
+.print-preview-exit {
+  display: none;
+}
+
+.is-print-preview .print-preview-exit {
+  display: inline-flex;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  color: #374151;
+  font-size: 0.775rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .is-print-preview .cv-document {
@@ -394,7 +464,8 @@ summary {
   }
 
   .page-tools,
-  .web-only {
+  .web-only,
+  .print-preview-exit {
     display: none !important;
   }
 
