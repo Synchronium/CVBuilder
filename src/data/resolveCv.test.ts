@@ -1,6 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { resolveCv } from "./resolveCv";
+import { parseCv, resolveCv } from "./resolveCv";
 import { makeCv, makeRoleWithStarts } from "./resolveCv.fixtures";
+import exampleCv from "../../data/base.cv.example.json";
+
+describe("base.cv.example.json", () => {
+  // The committed example is the one tracked CV data file and the default the
+  // resolver loads. This guard fails loudly (with a Zod error) if it ever drifts
+  // out of sync with the schema, rather than breaking the app at runtime.
+  it("is valid against the CV schema", () => {
+    expect(() => parseCv(exampleCv)).not.toThrow();
+  });
+
+  it("resolves without throwing", () => {
+    expect(() => resolveCv(exampleCv)).not.toThrow();
+  });
+});
 
 describe("resolveCv", () => {
   it("resolves base data into a view model", () => {
