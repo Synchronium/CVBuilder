@@ -25,7 +25,7 @@ describe("resolveCv", () => {
       new Date(Date.UTC(2026, 4, 23))
     );
 
-    expect(cv.roles[0].positions.map((p) => p.id)).toEqual([
+    expect(cv.roles[0]!.positions.map((p) => p.id)).toEqual([
       "latest",
       "middle",
       "earliest"
@@ -51,7 +51,7 @@ describe("resolveCv", () => {
 
     // august (Aug) newest; bare-year and january are both Jan 2020 (equal), so
     // their relative order is the stable input order.
-    expect(cv.roles[0].positions.map((p) => p.id)).toEqual([
+    expect(cv.roles[0]!.positions.map((p) => p.id)).toEqual([
       "august",
       "bare-year",
       "january"

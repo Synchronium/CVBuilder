@@ -7,7 +7,9 @@ import { makeCv, makeRole } from "../../data/resolveCv.fixtures";
 /** Resolves a raw role into a view model the way the app does. */
 function resolvedRole(role = makeRole()) {
   const cv = resolveCv(makeCv({ roles: [role] }), new Date(Date.UTC(2026, 4, 23)));
-  return cv.roles[0];
+  const resolved = cv.roles[0];
+  if (!resolved) throw new Error("expected one resolved role");
+  return resolved;
 }
 
 describe("StandardRole", () => {
