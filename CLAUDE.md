@@ -17,7 +17,10 @@ npm run dev       # Vite dev server (hot reload)
 npm run build     # tsc type-check + Vite build
 npm run lint      # ESLint
 npm test          # Vitest (single run)
-npm run test:watch  # Vitest (watch mode)
+npm run test:watch     # Vitest (watch mode)
+npm run test:coverage  # Vitest with coverage report
+npm run test:visual         # Playwright visual regression (compare to baselines)
+npm run test:visual:update  # regenerate visual baselines after an intended change
 ```
 
 ## Architecture
@@ -111,3 +114,11 @@ Options:
 - Component tests for rendering and user interactions (filtering)
 - Tests live alongside source files (`*.test.ts` / `*.test.tsx`)
 - Test setup in `src/test/setup.ts`
+
+### Visual regression (local, on demand — see ADR 0010)
+
+- Playwright snapshot tests in `visual/`, baselines committed in `visual/__screenshots__/`.
+- Runs against the production build (`vite preview`), one baseline per template per media mode (screen + print).
+- `npm run test:visual` compares; a failure means pixels changed, not necessarily a bug — inspect the diff under `test-results/`.
+- If the change is intended, run `npm run test:visual:update` and commit the updated baseline PNGs (that commit *is* the approval).
+- Not in CI: baselines are platform-specific (font/anti-alias rendering). Regenerate locally if they drift on a different machine.

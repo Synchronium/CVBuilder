@@ -108,12 +108,20 @@ To add a new template from a style description:
 ### Commands
 
 ```sh
-npm run dev         # start the preview server
-npm run build       # type-check + production build
-npm run lint        # ESLint
-npm test            # Vitest (single run)
-npm run test:watch  # Vitest (watch mode)
+npm run dev            # start the preview server
+npm run build          # type-check + production build
+npm run lint           # ESLint
+npm test               # Vitest (single run)
+npm run test:watch     # Vitest (watch mode)
+npm run test:coverage  # Vitest with coverage report
+npm run test:visual         # visual regression — compare templates to baselines
+npm run test:visual:update  # regenerate baselines after an intended visual change
 ```
+
+Visual regression runs locally on demand (not in CI). A failure means a
+template's rendering changed: inspect the diff under `test-results/`, then either
+fix the regression or, if the change is intended, run `test:visual:update` and
+commit the new baselines. See [ADR 0010](docs/adr/0010-local-visual-regression-testing.md).
 
 ### Data model
 
@@ -139,6 +147,8 @@ Company duration is always derived from position dates — never stored manually
 | `src/data/schemas.ts` | Zod schemas |
 | `src/data/resolveCv.ts` | Resolver: raw data → view model |
 | `src/templates/registry.ts` | Template registration |
+| `src/templates/_shared/` | Shared template primitives (see ADR 0009) |
+| `visual/` | Visual-regression specs and committed baselines (see ADR 0010) |
 | `scripts/screenshot.js` | Playwright screenshot utility |
 | `docs/adr/` | Architectural decision records |
 
@@ -170,3 +180,5 @@ Components receive only a fully resolved view model — no raw data, no calculat
 | [0006 — Runtime preview first](docs/adr/0006-runtime-preview-then-static-artifacts.md) | Start with a live Vite app; static generation comes later |
 | [0007 — Named template registry](docs/adr/0007-named-template-registry.md) | Templates registered by stable ID; switched via URL param |
 | [0008 — Inline bold syntax](docs/adr/0008-inline-bold-syntax.md) | Bullet text uses `*bold*` for emphasis; no other Markdown is supported |
+| [0009 — Composable templates from shared primitives](docs/adr/0009-composable-templates-from-shared-primitives.md) | Templates compose shared `_shared/` primitives styled per template via `cv-*` classes |
+| [0010 — Local visual regression testing](docs/adr/0010-local-visual-regression-testing.md) | Playwright snapshot tests run locally on demand, not in CI |

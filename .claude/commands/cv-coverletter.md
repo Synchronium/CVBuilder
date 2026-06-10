@@ -78,27 +78,30 @@ Use everything gathered. Guidelines:
 Create a self-contained HTML file at `data/cover-letters/<company-slug>.html`.
 
 The file must:
-1. Read the template CSS from `src/templates/<template>/<template>.css` and embed it as an inline `<style>` block (this keeps the letter portable without needing the dev server)
-2. Use the same header HTML structure as the template so it looks consistent with the CV
-3. Add cover-letter-specific styles (see below)
+1. Embed the relevant CSS as an inline `<style>` block (this keeps the letter portable without needing the dev server). You need **both**:
+   - the template's own CSS from `src/templates/<template>/<template>.css`, and
+   - the shared primitive styles from `src/styles/base.css` that the template relies on (the `cv-*` classes — e.g. `.cv-name`, `.cv-headline`, `.cv-contact`, `.cv-contact__item`). The template CSS alone no longer fully styles the header; the shared `cv-*` rules live in `base.css`.
+2. Use the same header HTML structure as the template so it looks consistent with the CV. Templates now compose shared primitives, so the header markup is in `src/templates/<template>/<Name>Header.tsx`, which uses `Header.*` from `src/templates/_shared/Header.tsx`. The rendered class names are the shared `cv-*` ones plus the template's own wrapper classes.
 
 ### Header HTML (divided template)
 
+This is what `DividedHeader` + the shared `Header.*` primitives render — replicate the rendered markup, not the JSX:
+
 ```html
 <header class="divided-header">
-  <h1>{person.name}</h1>
+  <h1 class="cv-name">{person.name}</h1>
   <div class="divided-meta-row">
-    <p class="headline">{person.headline}</p>
-    <div class="divided-contact">
-      <span class="divided-contact-item"><a href="mailto:{email}">{email}</a></span>
-      <span class="divided-contact-item">{phone}</span>
-      <span class="divided-contact-item">{locality}, {region}</span>
-    </div>
+    <p class="cv-headline">{person.headline}</p>
+    <address class="cv-contact">
+      <span class="cv-contact__item"><a href="mailto:{email}">{email}</a></span>
+      <span class="cv-contact__item">{phone}</span>
+      <span class="cv-contact__item">{locality}, {region}, {country}</span>
+    </address>
   </div>
 </header>
 ```
 
-For other templates, inspect `src/templates/<template>/<template>.tsx` to find the equivalent header structure and replicate it.
+For other templates, inspect that template's `<Name>Header.tsx` (and the shared `src/templates/_shared/Header.tsx`) to find the equivalent header structure and replicate the rendered markup.
 
 ### Cover-letter-specific CSS to add after the template CSS
 
