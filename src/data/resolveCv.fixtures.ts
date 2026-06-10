@@ -37,6 +37,26 @@ export function makeCv(overrides: Partial<CV> = {}): CV {
   };
 }
 
+/** Builds a `Person` for tests, overridable per field. */
+export function makePerson(overrides: Partial<CV["person"]> = {}): CV["person"] {
+  return { ...makeCv().person, ...overrides };
+}
+
+/** Builds an `EducationItem` for tests, overridable per field. */
+export function makeEducationItem(
+  overrides: Partial<CV["education"][number]> = {}
+): CV["education"][number] {
+  return {
+    id: "edu-1",
+    qualification: "BSc Computer Science",
+    grade: "First",
+    institution: "Test University",
+    start: "2010",
+    end: "2013",
+    ...overrides
+  };
+}
+
 /** Builds a single role with one company and the given position starts. */
 export function makeRoleWithStarts(
   starts: Array<{ id: string; start: string; end?: string }>

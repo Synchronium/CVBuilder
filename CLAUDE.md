@@ -115,6 +115,12 @@ Options:
 - Tests live alongside source files (`*.test.ts` / `*.test.tsx`)
 - Test setup in `src/test/setup.ts`
 
+### Markup snapshots — shared primitives only (see ADR 0011)
+
+- `src/templates/_shared/primitives.snapshot.test.tsx` snapshots each leaf `_shared/` primitive's rendered markup to pin the `cv-*` class/structure contract that all templates' CSS depends on.
+- Deliberately scoped to leaf primitives — NOT whole templates (visual regression covers those) or composites like `StandardRole` (behavioural tests cover those). Do not broaden this without revisiting ADR 0011; broad snapshots rot.
+- A failure means a primitive's markup/classes changed. If intentional, regenerate with `npx vitest -u src/templates/_shared/primitives.snapshot.test.tsx` and review the (small) diff before committing.
+
 ### Visual regression (local, on demand — see ADR 0010)
 
 - Playwright snapshot tests in `visual/`, baselines committed in `visual/__screenshots__/`.

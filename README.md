@@ -182,3 +182,4 @@ Components receive only a fully resolved view model — no raw data, no calculat
 | [0008 — Inline bold syntax](docs/adr/0008-inline-bold-syntax.md) | Bullet text uses `*bold*` for emphasis; no other Markdown is supported |
 | [0009 — Composable templates from shared primitives](docs/adr/0009-composable-templates-from-shared-primitives.md) | Templates compose shared `_shared/` primitives styled per template via `cv-*` classes |
 | [0010 — Local visual regression testing](docs/adr/0010-local-visual-regression-testing.md) | Playwright snapshot tests run locally on demand, not in CI |
+| [0011 — Snapshot shared primitives only](docs/adr/0011-snapshot-shared-primitives-only.md) | Markup snapshots cover the `_shared/` primitives' class contract; not whole templates or composites |

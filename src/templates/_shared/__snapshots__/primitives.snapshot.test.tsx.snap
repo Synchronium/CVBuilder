@@ -1,0 +1,263 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`shared primitive markup contract > BulletList 1`] = `
+<DocumentFragment>
+  <ul
+    class="bullet-list"
+  >
+    <li>
+      <p>
+        Did a thing.
+      </p>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Education.Detail 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-education__detail"
+  >
+    First, Test University, 2010 to 2013
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Education.Grade 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-education__grade"
+  >
+    First
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Education.Institution 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-education__institution"
+  >
+    Test University
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Education.Qualification 1`] = `
+<DocumentFragment>
+  <h3
+    class="cv-education__qualification"
+  >
+    BSc Computer Science
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Education.Years 1`] = `
+<DocumentFragment>
+  <span
+    class="cv-education__years"
+  >
+    2010–2013
+  </span>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Header.Contact 1`] = `
+<DocumentFragment>
+  <address
+    class="cv-contact"
+  >
+    <span
+      class="cv-contact__item"
+    >
+      <a
+        href="mailto:test@example.com"
+      >
+        test@example.com
+      </a>
+    </span>
+    <span
+      class="cv-contact__item"
+    >
+      <a
+        href="tel:+440000000000"
+      >
+        +44 0000 000000
+      </a>
+    </span>
+    <span
+      class="cv-contact__item"
+    >
+      Testville, Testshire, UK
+    </span>
+    <span
+      class="cv-contact__item"
+    >
+      Full right to work in the UK
+    </span>
+  </address>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Header.Headline 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-headline"
+  >
+    Engineer
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Header.Name 1`] = `
+<DocumentFragment>
+  <h1
+    class="cv-name"
+  >
+    Ada Lovelace
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Header.Summary 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-summary"
+  >
+    A summary.
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Prose 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-prose"
+  >
+    Body.
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Role.Company 1`] = `
+<DocumentFragment>
+  <h3
+    class="cv-role__company"
+  >
+    Test Co
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Role.Context 1`] = `
+<DocumentFragment>
+  <details
+    class="web-only cv-role__context"
+  >
+    <summary>
+      Role context
+    </summary>
+    <p>
+      Some context.
+    </p>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Role.Description 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-role__description"
+  >
+    Does things.
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Role.Duration 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-role__duration"
+  >
+    3 yrs
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Role.Positions 1`] = `
+<DocumentFragment>
+  <ol
+    class="cv-positions"
+  >
+    <li
+      class="cv-positions__item cv-positions__item--current"
+    >
+      <div
+        class="cv-positions__row"
+      >
+        <span
+          class="cv-positions__title"
+        >
+          Engineer
+        </span>
+        <span
+          class="cv-positions__date"
+        >
+          Jan 2020 - Present
+        </span>
+      </div>
+    </li>
+  </ol>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Role.Product 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-role__product"
+  >
+    Flagship
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Role.Tech 1`] = `
+<DocumentFragment>
+  <p
+    class="cv-role__tech"
+  >
+    TypeScript, React
+  </p>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Section (heading variant) 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="experience-heading"
+    class="cv-section"
+  >
+    <h2
+      id="experience-heading"
+    >
+      Experience
+    </h2>
+    child
+  </section>
+</DocumentFragment>
+`;
+
+exports[`shared primitive markup contract > Section (label variant) 1`] = `
+<DocumentFragment>
+  <span
+    aria-level="2"
+    class="cv-section-label"
+    role="heading"
+  >
+    Experience
+  </span>
+  child
+</DocumentFragment>
+`;
