@@ -1,5 +1,7 @@
 # CV Builder
 
+[![CI](https://github.com/Synchronium/CVBuilder/actions/workflows/ci.yml/badge.svg)](https://github.com/Synchronium/CVBuilder/actions/workflows/ci.yml)
+
 Your career data lives in one JSON file. Claude Code skills handle the rest: extracting your existing CV, reviewing content quality, generating targeted variants for specific roles, and writing cover letters. Multiple visual templates, all print-to-PDF ready.
 
 ## What you need
@@ -122,6 +124,12 @@ Visual regression runs locally on demand (not in CI). A failure means a
 template's rendering changed: inspect the diff under `test-results/`, then either
 fix the regression or, if the change is intended, run `test:visual:update` and
 commit the new baselines. See [ADR 0010](docs/adr/0010-local-visual-regression-testing.md).
+
+### Continuous integration
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs `lint`, `build`, and
+`test` on every push to `main` and on pull requests targeting `main`. Visual
+regression is not part of CI (its baselines are platform-specific — see ADR 0010).
 
 ### Data model
 
