@@ -83,7 +83,7 @@ Note in a comment at the top of the file (in the `metadata.notes` array) what th
 Start the dev server if needed (`npm run dev`), then take a print screenshot of the variant. You'll need to temporarily update the app to load the variant file, or take the screenshot against the base and describe the changes. Take the print screenshot:
 
 ```
-node scripts/screenshot.js divided /tmp/cv-variant-print.png --print
+npm run screenshot -- divided /tmp/cv-variant-print.png --print
 ```
 
 Show the screenshot and summarise what changed from the base CV. Ask the user if anything needs adjusting.

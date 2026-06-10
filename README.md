@@ -157,7 +157,7 @@ Company duration is always derived from position dates — never stored manually
 | `src/templates/registry.ts` | Template registration |
 | `src/templates/_shared/` | Shared template primitives (see ADR 0009) |
 | `visual/` | Visual-regression specs and committed baselines (see ADR 0010) |
-| `scripts/screenshot.js` | Playwright screenshot utility |
+| `scripts/screenshot.ts` | Playwright screenshot utility (`npm run screenshot`) |
 | `docs/adr/` | Architectural decision records |
 
 ### Architecture

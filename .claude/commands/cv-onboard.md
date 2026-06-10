@@ -95,7 +95,7 @@ Work through the critical items with the user now, collecting their input. Flag 
 
 Take a screen screenshot of the default template:
 ```
-node scripts/screenshot.js divided /tmp/cv-screen.png
+npm run screenshot -- divided /tmp/cv-screen.png
 ```
 
 Show it to the user. Then describe the four available templates:
@@ -106,7 +106,7 @@ Show it to the user. Then describe the four available templates:
 
 Ask which they'd like to focus on, or whether they'd like to see screenshots of all of them. Take screenshots as needed:
 ```
-node scripts/screenshot.js <template> /tmp/cv-<template>.png
+npm run screenshot -- <template> /tmp/cv-<template>.png
 ```
 
 ---
@@ -121,7 +121,7 @@ Run `/cv-report` to produce a talent acquisition report on the current content. 
 
 Take a print screenshot of the chosen template:
 ```
-node scripts/screenshot.js <template> /tmp/cv-print.png --print
+npm run screenshot -- <template> /tmp/cv-print.png --print
 ```
 
 Show it and explain the two-page target: two A4 pages is the sweet spot for most recruiters and ATS systems — enough room to tell a full story without padding. If the content runs long, work through it: tighten bullets, mark older roles as `condensed: true`, or adjust print styles.

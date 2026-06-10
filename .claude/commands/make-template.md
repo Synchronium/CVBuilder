@@ -45,8 +45,8 @@ Primitives render **semantic `cv-*` classes** and carry no styling of their own.
 2. **Add the template ID to the visual-regression spec**: append it to the `templates` array in `visual/templates.visual.spec.ts`, or its baselines will never be generated or checked.
 3. **Screenshot for review**: start the dev server with `npm run dev` (background), then:
    ```
-   node scripts/screenshot.js <name> /tmp/cv-screen.png
-   node scripts/screenshot.js <name> /tmp/cv-print.png --print
+   npm run screenshot -- <name> /tmp/cv-screen.png
+   npm run screenshot -- <name> /tmp/cv-print.png --print
    ```
 4. **Generate the visual-regression baselines** for the new template (see `docs/adr/0010-local-visual-regression-testing.md`):
    ```

@@ -6,12 +6,6 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   { ignores: ["dist"] },
-  {
-    files: ["scripts/**/*.js"],
-    languageOptions: {
-      globals: globals.node
-    }
-  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -30,6 +24,14 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true }
       ]
+    }
+  },
+  {
+    // Node scripts (e.g. scripts/screenshot.ts) run under Node, not the browser.
+    // This block comes last so its globals win over the browser block above.
+    files: ["scripts/**/*.ts"],
+    languageOptions: {
+      globals: globals.node
     }
   }
 );

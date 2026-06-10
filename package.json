@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:visual": "playwright test",
-    "test:visual:update": "playwright test --update-snapshots"
+    "test:visual:update": "playwright test --update-snapshots",
+    "screenshot": "tsx scripts/screenshot.ts"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -36,6 +37,7 @@
     "globals": "^15.0.0",
     "jsdom": "^25.0.0",
     "playwright": "^1.60.0",
+    "tsx": "^4.22.4",
     "typescript": "^5.8.0",
     "typescript-eslint": "^8.0.0",
     "vite": "^7.0.0",

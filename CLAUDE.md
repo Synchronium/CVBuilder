@@ -52,7 +52,7 @@ Key constraint: **components receive only a fully resolved view model**. They mu
 | `src/utils/parseInline.ts` | Parses `*bold*` syntax in bullet text |
 | `src/components/` | React components (render view model only) |
 | `src/templates/` | Template registry and per-template CSS |
-| `scripts/screenshot.js` | Playwright screenshot utility |
+| `scripts/screenshot.ts` | Playwright screenshot utility (`npm run screenshot`) |
 | `data/cover-letters/` | Generated cover letter HTML files (gitignored) |
 | `.claude/commands/` | Claude Code slash command skills |
 | `docs/adr/` | Architectural Decision Records |
