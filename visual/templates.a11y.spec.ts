@@ -1,7 +1,8 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { TEMPLATE_IDS } from "../src/templates/templateIds";
 
-const templates = ["classic", "two-column", "divided", "vivid"] as const;
+const templates = TEMPLATE_IDS;
 
 /**
  * Accessibility checks against the real production build (see ADR 0012). Unlike

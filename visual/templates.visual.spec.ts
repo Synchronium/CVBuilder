@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { TEMPLATE_IDS } from "../src/templates/templateIds";
 
-const templates = ["classic", "two-column", "divided", "vivid"] as const;
+const templates = TEMPLATE_IDS;
 
 /**
  * One baseline per template per media mode. The base CV (no variant) is used so

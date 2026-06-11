@@ -41,17 +41,16 @@ Primitives render **semantic `cv-*` classes** and carry no styling of their own.
 
 ## After implementing
 
-1. **Register** the new template in `src/templates/registry.ts`.
-2. **Add the template ID to the visual-regression spec**: append it to the `templates` array in `visual/templates.visual.spec.ts`, or its baselines will never be generated or checked.
-3. **Screenshot for review**: start the dev server with `npm run dev` (background), then:
+1. **Register** the new template: add its ID to `src/templates/templateIds.ts` and its entry to `src/templates/registry.ts`. These two are kept in sync by the type system (`satisfies Record<TemplateId, ...>`), so adding to one without the other is a compile error. The template switcher, the visual-regression spec, and the accessibility spec all derive their template list from `templateIds.ts`, so no test files need editing by hand.
+2. **Screenshot for review**: start the dev server with `npm run dev` (background), then:
    ```
    npm run screenshot -- <name> /tmp/cv-screen.png
    npm run screenshot -- <name> /tmp/cv-print.png --print
    ```
-4. **Generate the visual-regression baselines** for the new template (see `docs/adr/0010-local-visual-regression-testing.md`):
+3. **Generate the visual-regression baselines** for the new template (see `docs/adr/0010-local-visual-regression-testing.md`):
    ```
    npm run test:visual:update
    ```
    This creates `visual/__screenshots__/<name>-screen.png` and `<name>-print.png`, which must be committed alongside the template. Then confirm a clean `npm run test:visual` passes.
-5. **Verify nothing else broke**: `npm run lint`, `npm run build`, `npm test`.
-6. Report what you built and show both screenshots.
+4. **Verify nothing else broke**: `npm run lint`, `npm run build`, `npm test`.
+5. Report what you built and show both screenshots.
