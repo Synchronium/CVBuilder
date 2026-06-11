@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { CVPage } from "./components/CVPage";
 import { EmptyState } from "./components/EmptyState";
 import { resolveCv } from "./data/resolveCv";
-import { loadBaseCv } from "./data/baseCv";
+import { loadBaseCv, loadExampleCv } from "./data/baseCv";
 import { getVariantNames, loadVariantData } from "./data/variants";
 import {
   getTemplate,
@@ -39,9 +39,15 @@ export function App() {
   }, []);
 
   // Load the base CV once on mount (user's base.cv.json, else the example).
+  // `?cv=example` forces the bundled example, so deterministic, non-personal
+  // output can be rendered regardless of which real CV is present locally
+  // (used by the visual-regression and accessibility baselines).
   useEffect(() => {
     let cancelled = false;
-    loadBaseCv()
+    const forceExample =
+      new URLSearchParams(window.location.search).get("cv") === "example";
+    const load = forceExample ? loadExampleCv() : loadBaseCv();
+    load
       .then((data) => {
         if (cancelled) return;
         setBaseData(data);

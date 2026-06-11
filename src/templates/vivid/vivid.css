@@ -5,7 +5,8 @@
 ═══════════════════════════════════════════════════════════ */
 
 .template-vivid {
-  --accent: #e85d04;
+  --accent: #e85d04; /* bright: decorative use only (rule, borders) */
+  --accent-text: #cc4a08; /* darker: AA contrast for accent-coloured text on white */
   --dark: #0f172a;
 }
 
@@ -36,7 +37,7 @@
 .template-vivid .cv-headline {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 0;
   white-space: nowrap;
 }
@@ -59,7 +60,7 @@
 }
 
 .template-vivid .cv-contact a:hover {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 /* ── Summary ─────────────────────────────────────────────── */
@@ -124,7 +125,7 @@
 .template-vivid .cv-role__duration {
   font-size: 0.775rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -153,21 +154,27 @@
 }
 
 .template-vivid .cv-positions__date {
-  color: #9ca3af;
+  color: #6b7280; /* AA contrast on white */
   font-size: 0.775rem;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
+/* Secondary (older) positions are de-emphasised by size and a muted-but-
+   AA-compliant grey, rather than opacity (which drops contrast below 4.5). */
 .template-vivid .cv-positions__item:not(:first-child) {
   font-size: 0.8rem;
-  opacity: 0.7;
+}
+
+.template-vivid .cv-positions__item:not(:first-child) .cv-positions__title {
+  color: #6b7280;
+  font-weight: 400;
 }
 
 /* ── Tech ────────────────────────────────────────────────── */
 .template-vivid .cv-role__tech {
   font-size: 0.775rem;
-  color: #9ca3af;
+  color: #6b7280; /* AA contrast on white */
   line-height: 1.5;
   margin-top: 8px;
 }
@@ -204,7 +211,7 @@
 
 .template-vivid .cv-education__years {
   font-size: 0.775rem;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
   white-space: nowrap;
 }
@@ -218,7 +225,7 @@
 
 .template-vivid .cv-education__grade {
   font-size: 0.78rem;
-  color: #9ca3af;
+  color: #6b7280; /* AA contrast on white */
   margin: 0;
 }
 

@@ -38,6 +38,7 @@ Primitives render **semantic `cv-*` classes** and carry no styling of their own.
   - Suppresses detail for condensed roles (`role.condensed === true`) — e.g. hide company description and tech. Target whichever condensed modifier class your role wrapper uses (`.cv-role--condensed` if you used `StandardRole`, or your own `.<name>-role--condensed`).
   - `.web-only` hiding and `@page { size: A4; margin: 15mm 18mm }` are handled globally in `src/styles/base.css`; add template-specific print overrides only as needed.
 - Use `className="web-only"` on anything that should be hidden in print (e.g. the LinkedIn link is already handled inside `Header.Contact`).
+- **Meet WCAG AA contrast** (see `docs/adr/0012-accessibility-testing.md`). Normal text needs 4.5:1 against its background: use `#6b7280` or darker for muted/secondary text (not `#9ca3af`), never use `opacity` to de-emphasise text (use an explicit AA-compliant grey plus a lighter font weight instead), and if you use an accent colour for text make sure that colour passes AA (keep a brighter shade for decorative bars/borders if needed). The accessibility specs will fail otherwise.
 
 ## After implementing
 

@@ -9,10 +9,9 @@ const baseModules = import.meta.glob(
   { import: "default" }
 ) as Record<string, () => Promise<unknown>>;
 
-const PRECEDENCE = [
-  "../../data/base.cv.json",
-  "../../data/base.cv.example.json"
-] as const;
+const EXAMPLE_PATH = "../../data/base.cv.example.json";
+
+const PRECEDENCE = ["../../data/base.cv.json", EXAMPLE_PATH] as const;
 
 /** True if any base CV file is available to load. */
 export function hasBaseCv(): boolean {
@@ -30,4 +29,15 @@ export async function loadBaseCv(): Promise<unknown | null> {
     if (load) return load();
   }
   return null;
+}
+
+/**
+ * Loads the bundled example CV specifically, ignoring the user's base.cv.json.
+ * Used to render deterministic, non-personal output (e.g. the committed
+ * visual-regression and accessibility baselines), independent of whatever real
+ * CV happens to be present locally.
+ */
+export async function loadExampleCv(): Promise<unknown | null> {
+  const load = baseModules[EXAMPLE_PATH];
+  return load ? load() : null;
 }

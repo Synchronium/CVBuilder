@@ -12,7 +12,7 @@ const templates = TEMPLATE_IDS;
  */
 for (const template of templates) {
   test(`${template} — no accessibility violations`, async ({ page }) => {
-    await page.goto(`/?template=${template}`, { waitUntil: "domcontentloaded" });
+    await page.goto(`/?template=${template}&cv=example`, { waitUntil: "domcontentloaded" });
     await page.waitForSelector(".cv-document");
     await page.evaluate(() => document.fonts.ready);
 

@@ -128,3 +128,9 @@ Options:
 - `npm run test:visual` compares; a failure means pixels changed, not necessarily a bug — inspect the diff under `test-results/`.
 - If the change is intended, run `npm run test:visual:update` and commit the updated baseline PNGs (that commit *is* the approval).
 - Not in CI: baselines are platform-specific (font/anti-alias rendering). Regenerate locally if they drift on a different machine.
+
+### Accessibility (see ADR 0012)
+
+- Two layers: structural checks in the unit suite (`src/templates/templates.a11y.test.tsx`, `jest-axe`, runs in CI, `color-contrast` rule disabled because jsdom can't compute colours) and colour-contrast checks in the browser (`visual/templates.a11y.spec.ts`, `@axe-core/playwright`, runs with `npm run test:visual`, local only).
+- Templates meet WCAG AA. When editing template CSS keep within the contrast standard: muted text at `#6b7280` or darker, never `opacity` for text de-emphasis (use an explicit AA grey + lighter weight), and accent colours that pass AA wherever used as text (Vivid splits `--accent` for decoration vs `--accent-text` for text).
+- Both layers pick up new templates automatically via `templateIds.ts`.
