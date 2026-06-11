@@ -60,16 +60,29 @@ Keep it to these four. Don't ask more.
 
 Use everything gathered. Guidelines:
 
-- **Do not open with** "I am writing to apply for..." or "I am excited to apply..." — start with something specific to the company or role
-- **3–4 paragraphs max.** Structure:
-  - Para 1: Why this company/role specifically — show you understand what they do and why it's interesting to you
-  - Para 2: Your strongest matching evidence — specific, not generic. Name numbers where relevant
-  - Para 3: A second angle, or something that makes you distinctive for this specific role
-  - Closing: One or two sentences. Confident, not fawning
-- **No em dashes** — use commas, parentheses, or plain hyphens
-- Match the tone of the JD — if it's conversational, don't be stiff; if it's formal, don't be breezy
-- Do not pad. A tight three-paragraph letter beats a sprawling four-paragraph one
-- Sign off with "Kind regards," unless the JD's tone clearly warrants something more informal
+### Voice — write like a real person, not a cover-letter generator
+
+The default tone is **conversational and understated**, as if the candidate is talking plainly to a person. This matters more than any other guideline here. Aim for the register of a thoughtful email to a colleague, not a formal application.
+
+- **Open by introducing yourself naturally**, in plain first person. A good pattern is: who you are + what you do now + the genuine hook (one honest reason this role or company appeals). For example, a natural opener takes the shape "I'm [name], a [current role] doing [plain description of current work]. [One ordinary sentence connecting that to this role]." Avoid "I am writing to apply for...", "I am excited to apply...", or opening on a quoted company slogan.
+- **Plain over grandiose.** Cut flourishes and self-important framing. Avoid lines like "an easy line to write and a hard one to mean", "the kind of work I want my time to count towards", "teams that get this right will pull ahead", or "because I've felt the cost of getting it wrong". Say the ordinary version instead ("a fair bit of my time goes on...", "I'd be glad to talk it through").
+- **Never use the "it's not X, it's Y" construction** (e.g. "this isn't an abstract mission to me, it's the kind of work..."). It is a strong AI tell. State the point directly and positively instead.
+- **No em dashes** — use commas, parentheses, or plain hyphens.
+- Contractions are good ("I'm", "it's", "aren't"). They read human.
+- Don't over-claim or gush about the company. Quiet confidence beats enthusiasm. One genuine reason for interest is worth more than three breathless ones.
+
+### Structure
+
+- **3–4 short paragraphs max**, optionally a one-line closing.
+  - Para 1: A natural intro and why this company/role specifically — show you understand what they do and why it's a genuine fit.
+  - Para 2: Your strongest matching evidence — specific, not generic. Name numbers where relevant, but plainly.
+  - Para 3: A second angle, or something that makes you distinctive for this specific role.
+  - Closing: One or two sentences, warm and low-key (e.g. "I'd be glad to talk it through. Thanks for reading.").
+- Match the tone of the JD, but stay on the understated side of it — if it's conversational, be conversational; if it's formal, be plain rather than stiff.
+- Do not pad. A tight three-paragraph letter beats a sprawling four-paragraph one.
+- Sign off with "Kind regards," unless the JD's tone clearly warrants something more informal.
+
+After drafting, **reread it once and strip anything that sounds like AI wrote it** — grandiose abstractions, "not X but Y" phrasing, and any sentence that is selling rather than saying.
 
 ---
 
