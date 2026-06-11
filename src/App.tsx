@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { CVPage } from "./components/CVPage";
+import { EmptyState } from "./components/EmptyState";
 import { resolveCv } from "./data/resolveCv";
+import { loadBaseCv } from "./data/baseCv";
 import { getVariantNames, loadVariantData } from "./data/variants";
 import {
   getTemplate,
@@ -13,6 +15,8 @@ export function App() {
   const [variantId, setVariantId] = useState<string | null>(() =>
     getInitialVariantId(variantNames)
   );
+  const [baseData, setBaseData] = useState<unknown | null>(null);
+  const [baseLoaded, setBaseLoaded] = useState(false);
   const [variantData, setVariantData] = useState<unknown | null>(null);
   const [variantError, setVariantError] = useState<string | null>(null);
   const templateOptions = useMemo(() => getTemplateOptions(), []);
@@ -32,6 +36,26 @@ export function App() {
     }
     // Run once on mount to reconcile the initial URL.
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Load the base CV once on mount (user's base.cv.json, else the example).
+  useEffect(() => {
+    let cancelled = false;
+    loadBaseCv()
+      .then((data) => {
+        if (cancelled) return;
+        setBaseData(data);
+        setBaseLoaded(true);
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        console.error(error);
+        setBaseData(null);
+        setBaseLoaded(true);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -61,7 +85,12 @@ export function App() {
     };
   }, [variantId]);
 
-  const cv = useMemo(() => resolveCv(variantData ?? undefined), [variantData]);
+  // Variant data (when selected and loaded) overrides the base CV.
+  const activeData = variantData ?? baseData;
+  const cv = useMemo(
+    () => (activeData == null ? null : resolveCv(activeData)),
+    [activeData]
+  );
 
   const handleTemplateChange = (nextTemplateId: string) => {
     const nextTemplate = getTemplate(nextTemplateId);
@@ -86,6 +115,16 @@ export function App() {
     }
     setPrintMode(enabled);
   };
+
+  // No CV data found once loading has settled: show onboarding instructions.
+  if (baseLoaded && cv === null) {
+    return <EmptyState />;
+  }
+
+  // Base CV still loading on first paint.
+  if (cv === null) {
+    return <main className="app" aria-busy="true" />;
+  }
 
   return (
     <CVPage

@@ -2,8 +2,9 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { resolveCv } from "../data/resolveCv";
 import { getTemplateOptions } from "./registry";
+import { makeFullCv } from "../data/resolveCv.fixtures";
 
-const cv = resolveCv(undefined, new Date(Date.UTC(2026, 4, 23)));
+const cv = resolveCv(makeFullCv(), new Date(Date.UTC(2026, 4, 23)));
 const templates = getTemplateOptions();
 
 describe.each(templates)("$label template", ({ Component }) => {

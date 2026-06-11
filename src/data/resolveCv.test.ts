@@ -1,24 +1,31 @@
 import { describe, expect, it } from "vitest";
 import { parseCv, resolveCv } from "./resolveCv";
-import { makeCv, makeRoleWithStarts } from "./resolveCv.fixtures";
-import exampleCv from "../../data/base.cv.example.json";
+import { makeCv, makeFullCv, makeRoleWithStarts } from "./resolveCv.fixtures";
+
+// Loaded via glob (not a static import) so a developer temporarily moving the
+// example aside does not break compilation of the test suite.
+const exampleModules = import.meta.glob("../../data/base.cv.example.json", {
+  import: "default",
+  eager: true
+}) as Record<string, unknown>;
+const exampleCv = Object.values(exampleModules)[0];
 
 describe("base.cv.example.json", () => {
-  // The committed example is the one tracked CV data file and the default the
-  // resolver loads. This guard fails loudly (with a Zod error) if it ever drifts
-  // out of sync with the schema, rather than breaking the app at runtime.
-  it("is valid against the CV schema", () => {
+  // The committed example is a tracked CV data file. This guard fails loudly
+  // (with a Zod error) if it ever drifts out of sync with the schema. It is
+  // skipped if the file is absent, so it never blocks the build.
+  it.runIf(exampleCv !== undefined)("is valid against the CV schema", () => {
     expect(() => parseCv(exampleCv)).not.toThrow();
   });
 
-  it("resolves without throwing", () => {
+  it.runIf(exampleCv !== undefined)("resolves without throwing", () => {
     expect(() => resolveCv(exampleCv)).not.toThrow();
   });
 });
 
 describe("resolveCv", () => {
   it("resolves base data into a view model", () => {
-    const cv = resolveCv(undefined, new Date(Date.UTC(2026, 4, 23)));
+    const cv = resolveCv(makeFullCv(), new Date(Date.UTC(2026, 4, 23)));
 
     expect(cv.person.name).toBe("Alex Morgan");
     expect(typeof cv.summary).toBe("string");
@@ -73,7 +80,7 @@ describe("resolveCv", () => {
   });
 
   it("moves current state and date display onto positions", () => {
-    const cv = resolveCv(undefined, new Date(Date.UTC(2026, 4, 23)));
+    const cv = resolveCv(makeFullCv(), new Date(Date.UTC(2026, 4, 23)));
     const clockwork = cv.roles.find((role) => role.id === "clockwork-software");
 
     expect(clockwork?.duration).toBe("6 yrs");

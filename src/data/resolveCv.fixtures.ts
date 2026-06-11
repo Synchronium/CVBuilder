@@ -91,3 +91,80 @@ export function makeRole(overrides: Partial<CV["roles"][number]> = {}): CV["role
     ...overrides
   };
 }
+
+/**
+ * A complete, render-ready CV for component/template/a11y tests. Self-contained
+ * so tests do not depend on the real data/base.cv.example.json file (which the
+ * app deliberately tolerates being absent). Mirrors the example's shape: a
+ * current role with two positions, a condensed older role, education, interests.
+ *
+ * Resolved with `new Date(Date.UTC(2026, 4, 23))`, the Clockwork duration is
+ * "6 yrs" and its current position date range is "Mar 2022 - Present".
+ */
+export function makeFullCv(): CV {
+  return makeCv({
+    person: makePerson({
+      id: "alex-morgan",
+      name: "Alex Morgan",
+      headline: "Engineering Manager | Technical Leader",
+      contact: {
+        email: "alex.morgan@example.com",
+        phone: "+44 7700 900123",
+        linkedin: "https://www.linkedin.com/in/alex-morgan-example/",
+        address: {
+          line1: "1 Example Street",
+          locality: "Bristol",
+          region: "Bristol",
+          postcode: "BS1 1AA",
+          country: "UK"
+        }
+      }
+    }),
+    summary: "Engineering leader with a decade of experience building teams and shipping software.",
+    roles: [
+      makeRole({
+        id: "clockwork-software",
+        company: {
+          name: "Clockwork Software Ltd",
+          description: "A field service management platform.",
+          websites: []
+        },
+        positions: [
+          { id: "clockwork-engineering-manager", title: "Engineering Manager", start: "2022-03", scope: "" },
+          { id: "clockwork-senior-engineer", title: "Senior Software Engineer", start: "2020-06", end: "2022-02", scope: "" }
+        ],
+        bullets: [{ id: "cw-1", text: "Manage *two cross-functional product teams* across the platform." }],
+        tech: ["TypeScript", "React", "Node.js"]
+      }),
+      makeRole({
+        id: "foundry-analytics",
+        company: { name: "Foundry Analytics", description: "A data analytics company.", websites: [] },
+        positions: [
+          { id: "foundry-senior", title: "Senior Full Stack Engineer", start: "2019-01", end: "2020-05", scope: "" },
+          { id: "foundry-fullstack", title: "Full Stack Engineer", start: "2017-04", end: "2018-12", scope: "" }
+        ],
+        bullets: [{ id: "fa-1", text: "Designed and built the connector framework." }],
+        tech: ["Python", "Django"]
+      }),
+      makeRole({
+        id: "pixel-and-paper",
+        condensed: true,
+        company: { name: "Pixel & Paper Ltd", description: "A digital agency.", websites: [] },
+        positions: [
+          { id: "pp-web", title: "Web Developer", start: "2014-09", end: "2017-03", scope: "" }
+        ],
+        bullets: [{ id: "pp-1", text: "Delivered web projects for clients across sectors." }],
+        tech: ["JavaScript", "PHP"]
+      })
+    ],
+    education: [
+      makeEducationItem({
+        id: "bristol",
+        qualification: "BSc Computer Science",
+        grade: "First Class Honours",
+        institution: "University of Bristol"
+      })
+    ],
+    interests: "Open source, trail running, woodworking."
+  });
+}

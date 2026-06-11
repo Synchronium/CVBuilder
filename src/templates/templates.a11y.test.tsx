@@ -3,11 +3,11 @@ import { afterEach, describe, expect, it } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { resolveCv } from "../data/resolveCv";
 import { getTemplateOptions } from "./registry";
-import exampleCv from "../../data/base.cv.example.json";
+import { makeFullCv } from "../data/resolveCv.fixtures";
 
 expect.extend(toHaveNoViolations);
 
-const cv = resolveCv(exampleCv, new Date(Date.UTC(2026, 4, 23)));
+const cv = resolveCv(makeFullCv(), new Date(Date.UTC(2026, 4, 23)));
 const templates = getTemplateOptions();
 
 /**

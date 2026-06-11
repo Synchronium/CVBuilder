@@ -1,4 +1,3 @@
-import rawCv from "../../data/base.cv.example.json";
 import {
   type CV,
   type Position,
@@ -29,7 +28,7 @@ export function parseCv(data: unknown): CV {
   return cvSchema.parse(data);
 }
 
-export function resolveCv(data: unknown = rawCv, today = new Date()): CvViewModel {
+export function resolveCv(data: unknown, today = new Date()): CvViewModel {
   const cv = parseCv(data);
 
   return {

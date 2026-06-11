@@ -5,6 +5,7 @@ import { useState } from "react";
 import { CVPage } from "./CVPage";
 import { resolveCv } from "../data/resolveCv";
 import { getTemplate, getTemplateOptions } from "../templates/registry";
+import { makeFullCv } from "../data/resolveCv.fixtures";
 
 function TestHarness({
   initialPrintMode = false,
@@ -15,7 +16,7 @@ function TestHarness({
 } = {}) {
   const [printMode, setPrintMode] = useState(initialPrintMode);
   const [templateId, setTemplateId] = useState("classic");
-  const cv = resolveCv(undefined, new Date(Date.UTC(2026, 4, 23)));
+  const cv = resolveCv(makeFullCv(), new Date(Date.UTC(2026, 4, 23)));
   const template = getTemplate(templateId);
 
   const handleTemplateChange = (nextTemplateId: string) => {
