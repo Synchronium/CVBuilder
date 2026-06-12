@@ -13,12 +13,6 @@ export function BulletList({ bullets }: BulletListProps) {
       {bullets.map((bullet) => (
         <li key={bullet.id}>
           <p>{parseInline(bullet.text)}</p>
-          {bullet.detail ? (
-            <details className="web-only bullet-detail">
-              <summary>More detail</summary>
-              <p>{parseInline(bullet.detail)}</p>
-            </details>
-          ) : null}
         </li>
       ))}
     </ul>

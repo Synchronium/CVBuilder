@@ -1,4 +1,4 @@
-# ADR 0012: Two-Layer Accessibility Testing
+# ADR 0011: Two-Layer Accessibility Testing
 
 ## Status
 
@@ -9,7 +9,7 @@ Accepted
 A CV is consumed by people using assistive technology and by automated systems
 (ATS, screen readers), so the rendered templates need to be accessible, not just
 good-looking. Until now nothing checked this automatically: accessibility issues
-were found by hand, one at a time (e.g. the Divided section headings in ADR 0010's
+were found by hand, one at a time (e.g. the Divided section headings in ADR 0009's
 work), which does not scale across four templates and two media modes (screen and
 print).
 
@@ -36,10 +36,10 @@ Test accessibility in **two layers**, each matched to its strength.
    using `@axe-core/playwright` against the production build, one run per template
    under the WCAG 2.0/2.1 A and AA rule tags. This catches the colour-contrast
    rules the unit layer cannot. It runs locally with the visual-regression suite
-   (`npm run test:visual`), **not in CI** — same rationale as ADR 0010 (the
+   (`npm run test:visual`), **not in CI** — same rationale as ADR 0009 (the
    browser run is local/on-demand).
 
-Both layers derive their template list from `templateIds.ts` (ADR 0009 / the
+Both layers derive their template list from `templateIds.ts` (ADR 0008 / the
 dynamic-IDs change), so a new template is covered automatically.
 
 ### Contrast remediation standard
@@ -70,8 +70,8 @@ templates now meet (WCAG AA, 4.5:1 for normal text), screen and print:
   templates within it.
 - Contrast is verified in a real browser only, so like visual-regression baselines
   it is not enforced in CI. If accessibility ever needs to gate merges, the browser
-  layer would have to move into CI (with the same environment caveats as ADR 0010).
+  layer would have to move into CI (with the same environment caveats as ADR 0009).
 - The split between a jsdom structural layer and a browser contrast layer mirrors
-  the split between the unit tests and visual regression (ADR 0010): fast,
+  the split between the unit tests and visual regression (ADR 0009): fast,
   CI-friendly checks for what jsdom can see; on-demand browser checks for what it
   cannot.

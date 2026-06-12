@@ -15,7 +15,6 @@ export function VividRole({ role }: VividRoleProps) {
       </div>
       <Role.Description description={role.company.description} />
       <Role.Positions positions={role.positions} />
-      <Role.Context context={role.interactive?.context} />
       <BulletList bullets={role.bullets} />
       <Role.Tech tech={role.tech} />
     </div>

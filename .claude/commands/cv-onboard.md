@@ -81,11 +81,10 @@ Review `data/base.cv.json` and report what's missing or incomplete. Split into t
 - Missing tech stacks (where relevant)
 - Roles that should be marked `condensed: true` — explain that this flag reduces the print detail for older or less important roles, showing just company name, title, and duration, to save space for what matters. Ask which roles, if any, should be deprioritised this way.
 
-**Optional (enhances the interactive web version only):**
-Explain that CVBuilder generates both a printable PDF and an interactive web page. The following only appear in the web version and aren't needed for a PDF output, but they add depth for anyone viewing the site:
-- `interactive.context` — a short description of the role's significance
-- Company website URLs
-- LinkedIn URL (shown as a link in the web version, hidden in print)
+**Optional:**
+- LinkedIn URL — shown as a link in the output (useful in the PDF, since the link is clickable).
+- Company website URLs.
+- `interactive.context` on roles, `scope` on positions, `detail` on bullets — these are kept in the data but **not currently rendered** (the app is a single print-first view; see ADR 0005). They are safe to fill in for future use, but don't appear in the PDF today, so treat them as low priority.
 
 Work through the critical items with the user now, collecting their input. Flag the optional ones and let them decide whether to fill them in now or later.
 

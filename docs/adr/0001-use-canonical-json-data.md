@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-The CV needs to support multiple outputs, templates and variants without duplicating shared career facts. The first source of truth was an existing PDF CV, but future edits should be made in a structured format that code can validate and render.
+The CV needs to support multiple templates and variants without duplicating shared career facts. The first source of truth was an existing PDF CV, but future edits should be made in a structured format that code can validate and render.
 
 ## Decision
 

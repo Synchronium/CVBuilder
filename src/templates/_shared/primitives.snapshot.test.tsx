@@ -15,13 +15,13 @@ import {
 } from "../../data/resolveCv.fixtures";
 
 /**
- * Markup snapshots of the SHARED primitives only (see ADR 0011). Their rendered
+ * Markup snapshots of the SHARED primitives only (see ADR 0010). Their rendered
  * element structure and `cv-*` class names are a contract that every template's
- * CSS depends on (ADR 0009). A snapshot diff here forces an intentional review
+ * CSS depends on (ADR 0008). A snapshot diff here forces an intentional review
  * when that contract changes — a rename behavioural tests would not catch.
  *
  * Scope is deliberately the leaf primitives, not whole templates (covered by
- * visual regression, ADR 0010) and not composites like StandardRole (covered by
+ * visual regression, ADR 0009) and not composites like StandardRole (covered by
  * its own behavioural test).
  */
 
@@ -65,10 +65,6 @@ describe("shared primitive markup contract", () => {
 
   it("Role.Positions", () => {
     expect(render(<Role.Positions positions={role.positions} />).asFragment()).toMatchSnapshot();
-  });
-
-  it("Role.Context", () => {
-    expect(render(<Role.Context context="Some context." />).asFragment()).toMatchSnapshot();
   });
 
   it("Role.Tech", () => {

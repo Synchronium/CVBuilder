@@ -1,5 +1,5 @@
 import type { CvViewModel } from "../data/resolveCv";
-import { PrintControls } from "./PrintControls";
+import { PrintButton } from "./PrintButton";
 import { TemplateSwitcher } from "./TemplateSwitcher";
 import { VariantSwitcher } from "./VariantSwitcher";
 import type { CvTemplate } from "../templates/types";
@@ -12,10 +12,8 @@ type CVPageProps = {
   variantNames: string[];
   selectedVariantId: string | null;
   variantError: string | null;
-  printMode: boolean;
   onTemplateChange: (templateId: string) => void;
   onVariantChange: (variantId: string | null) => void;
-  onPrintModeChange: (enabled: boolean) => void;
 };
 
 export function CVPage({
@@ -26,15 +24,15 @@ export function CVPage({
   variantNames,
   selectedVariantId,
   variantError,
-  printMode,
   onTemplateChange,
-  onVariantChange,
-  onPrintModeChange
+  onVariantChange
 }: CVPageProps) {
   const Template = template.Component;
 
   return (
-    <main className={printMode ? "app is-print-preview" : "app"}>
+    <main className="app">
+      {/* On-screen controls. Hidden in the actual print/PDF output (see base.css
+          @media print), like a print-preview toolbar that never prints. */}
       <div className="page-tools">
         <div className="page-tool-actions">
           <TemplateSwitcher
@@ -47,30 +45,14 @@ export function CVPage({
             selectedVariantId={selectedVariantId}
             onVariantChange={onVariantChange}
           />
-          <PrintControls
-            printMode={printMode}
-            onPrintModeChange={onPrintModeChange}
-          />
+          <PrintButton />
         </div>
       </div>
 
       {variantError ? (
-        <p className="page-notice page-notice--error web-only" role="alert">
+        <p className="page-notice page-notice--error" role="alert">
           {variantError}
         </p>
-      ) : null}
-
-      {/* Visible only in on-screen preview; hidden in the real printed PDF so it
-          never appears in the output. Lets a ?print=1 link be dismissed even
-          though the main toolbar is hidden in preview. */}
-      {printMode ? (
-        <button
-          type="button"
-          className="print-preview-exit"
-          onClick={() => onPrintModeChange(false)}
-        >
-          Exit preview
-        </button>
       ) : null}
 
       <Template cv={cv} />

@@ -1,4 +1,4 @@
-# ADR 0008: Custom Inline Bold Syntax in Bullet Text
+# ADR 0007: Custom Inline Bold Syntax in Bullet Text
 
 ## Status
 

@@ -38,25 +38,9 @@ function Positions({ positions }: { positions: PositionViewModel[] }) {
             <span className="cv-positions__title">{position.title}</span>
             <span className="cv-positions__date">{position.dateRange}</span>
           </div>
-          {position.scope ? (
-            <details className="web-only cv-positions__scope">
-              <summary>Scope</summary>
-              <p>{position.scope}</p>
-            </details>
-          ) : null}
         </li>
       ))}
     </ol>
-  );
-}
-
-function Context({ context }: { context?: string }) {
-  if (!context) return null;
-  return (
-    <details className="web-only cv-role__context">
-      <summary>Role context</summary>
-      <p>{context}</p>
-    </details>
   );
 }
 
@@ -65,4 +49,4 @@ function Tech({ tech }: { tech: string[] }) {
   return <p className="cv-role__tech">{tech.join(", ")}</p>;
 }
 
-export const Role = { Company, Product, Duration, Description, Positions, Context, Tech };
+export const Role = { Company, Product, Duration, Description, Positions, Tech };

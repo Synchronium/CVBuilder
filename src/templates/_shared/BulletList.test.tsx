@@ -15,18 +15,4 @@ describe("BulletList", () => {
     const { container } = render(<BulletList bullets={[]} />);
     expect(container.querySelector(".bullet-list")).toBeNull();
   });
-
-  it("renders an expandable detail only for bullets that have one", () => {
-    const bullets: Bullet[] = [
-      { id: "with", text: "Has detail", detail: "The fuller story" },
-      { id: "without", text: "No detail" }
-    ];
-    const { container } = render(<BulletList bullets={bullets} />);
-
-    // One <details> for the single bullet that carries detail.
-    const details = container.querySelectorAll("details.bullet-detail");
-    expect(details).toHaveLength(1);
-    expect(screen.getByText("More detail")).toBeInTheDocument();
-    expect(screen.getByText("The fuller story")).toBeInTheDocument();
-  });
 });

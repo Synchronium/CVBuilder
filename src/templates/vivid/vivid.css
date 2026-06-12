@@ -235,21 +235,6 @@
   line-height: 1.6;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 680px) {
-  .template-vivid .cv-name {
-    font-size: 2.2rem;
-  }
-
-  .template-vivid .vivid-lower {
-    grid-template-columns: 1fr;
-  }
-
-  .template-vivid .vivid-role-header {
-    flex-wrap: wrap;
-  }
-}
-
 /* ── Print ───────────────────────────────────────────────── */
 @media print {
   .template-vivid {

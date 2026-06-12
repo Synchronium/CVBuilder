@@ -1,4 +1,4 @@
-# ADR 0007: Named Template Registry with URL Switching
+# ADR 0006: Named Template Registry with URL Switching
 
 ## Status
 

@@ -219,22 +219,6 @@
   color: #374151;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 680px) {
-  .template-divided .divided-role,
-  .template-divided .divided-education,
-  .template-divided .divided-interests {
-    grid-template-columns: 1fr;
-    gap: 12px 0;
-  }
-
-  .template-divided .cv-section-label {
-    margin-left: -24px;
-    margin-right: -24px;
-  }
-
-}
-
 /* ── Print ───────────────────────────────────────────────── */
 @media print {
   .template-divided {

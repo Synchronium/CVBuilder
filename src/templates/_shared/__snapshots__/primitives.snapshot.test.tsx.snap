@@ -151,21 +151,6 @@ exports[`shared primitive markup contract > Role.Company 1`] = `
 </DocumentFragment>
 `;
 
-exports[`shared primitive markup contract > Role.Context 1`] = `
-<DocumentFragment>
-  <details
-    class="web-only cv-role__context"
-  >
-    <summary>
-      Role context
-    </summary>
-    <p>
-      Some context.
-    </p>
-  </details>
-</DocumentFragment>
-`;
-
 exports[`shared primitive markup contract > Role.Description 1`] = `
 <DocumentFragment>
   <p

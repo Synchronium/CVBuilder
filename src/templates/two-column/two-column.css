@@ -61,23 +61,6 @@
   padding-top: 0;
 }
 
-@media (max-width: 680px) {
-  .template-two-column {
-    grid-template-columns: 1fr;
-  }
-
-  .template-sidebar {
-    padding-right: 0;
-    border-right: 0;
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 22px;
-  }
-
-  .template-main {
-    padding-left: 0;
-  }
-}
-
 @media print {
   .template-two-column {
     font-size: 9.5pt;

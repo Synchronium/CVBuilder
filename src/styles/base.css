@@ -65,12 +65,6 @@ p {
   color: #5f6672; /* AA contrast on the #f0ede8 page background */
 }
 
-.print-controls label {
-  display: inline-flex;
-  gap: 6px;
-  align-items: center;
-}
-
 .print-controls button {
   border: 1px solid #d1d5db;
   border-radius: 5px;
@@ -293,21 +287,6 @@ h3 {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   EXPANDABLE DETAILS
-═══════════════════════════════════════════════════════════ */
-details {
-  margin: 8px 0 2px;
-}
-
-summary {
-  font-size: 0.775rem;
-  font-weight: 500;
-  color: #1d4e4f;
-  cursor: pointer;
-  letter-spacing: 0.01em;
-}
-
-/* ═══════════════════════════════════════════════════════════
    EDUCATION
 ═══════════════════════════════════════════════════════════ */
 .education-item + .education-item {
@@ -424,78 +403,10 @@ summary {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   PRINT PREVIEW MODE
-═══════════════════════════════════════════════════════════ */
-.is-print-preview .page-tools,
-.is-print-preview .web-only {
-  display: none;
-}
-
-/* The exit-preview button is shown ONLY while previewing on screen, and is
-   removed from the real printed output by the @media print rules below — so it
-   is deliberately not a .web-only element (those are hidden in preview too). */
-.print-preview-exit {
-  display: none;
-}
-
-.is-print-preview .print-preview-exit {
-  display: inline-flex;
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 5px;
-  background: #fff;
-  color: #374151;
-  font-size: 0.775rem;
-  padding: 6px 12px;
-  cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-.is-print-preview .cv-document {
-  box-shadow: none;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════════════════ */
-@media (max-width: 680px) {
-  .app {
-    padding: 12px;
-  }
-
-  .page-tools {
-    grid-template-columns: 1fr;
-  }
-
-  .page-tool-actions {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .cv-document {
-    padding: 28px 24px;
-  }
-
-  .cv-contact {
-    text-align: left;
-  }
-
-  h1 {
-    font-size: 1.9rem;
-  }
-
-  .role-header {
-    flex-wrap: wrap;
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════
    PRINT
+   The on-screen view already mirrors the printed page (a fixed A4-width
+   document on a coloured background). These rules strip the on-screen chrome
+   and bleed the document to the page edge for the actual print/PDF output.
 ═══════════════════════════════════════════════════════════ */
 @media print {
   @page {
@@ -519,8 +430,7 @@ summary {
   }
 
   .page-tools,
-  .web-only,
-  .print-preview-exit {
+  .page-notice {
     display: none !important;
   }
 

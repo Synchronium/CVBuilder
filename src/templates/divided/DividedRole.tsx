@@ -14,7 +14,6 @@ export function DividedRole({ role }: DividedRoleProps) {
         <Role.Duration duration={role.duration} />
         <Role.Positions positions={role.positions} />
         <Role.Description description={role.company.description} />
-        <Role.Context context={role.interactive?.context} />
       </div>
       <div className="divided-role-content">
         <BulletList bullets={role.bullets} />

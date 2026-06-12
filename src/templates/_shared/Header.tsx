@@ -31,7 +31,7 @@ function Contact({ person }: { person: Person }) {
         <a href={`tel:${phone.replaceAll(" ", "")}`}>{phone}</a>
       </span>
       {linkedin && (
-        <span className="cv-contact__item web-only">
+        <span className="cv-contact__item">
           <a href={linkedin}>LinkedIn</a>
         </span>
       )}

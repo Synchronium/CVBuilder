@@ -20,7 +20,6 @@ export function App() {
   const [variantData, setVariantData] = useState<unknown | null>(null);
   const [variantError, setVariantError] = useState<string | null>(null);
   const templateOptions = useMemo(() => getTemplateOptions(), []);
-  const [printMode, setPrintMode] = useState<boolean>(() => getInitialPrintMode());
   const [templateId, setTemplateId] = useState<TemplateId>(() =>
     getInitialTemplateId()
   );
@@ -113,15 +112,6 @@ export function App() {
     setVariantId(nextVariantId);
   };
 
-  const handlePrintModeChange = (enabled: boolean) => {
-    if (enabled) {
-      setUrlParam("print", "1");
-    } else {
-      removeUrlParam("print");
-    }
-    setPrintMode(enabled);
-  };
-
   // No CV data found once loading has settled: show onboarding instructions.
   if (baseLoaded && cv === null) {
     return <EmptyState />;
@@ -141,10 +131,8 @@ export function App() {
       variantNames={variantNames}
       selectedVariantId={variantId}
       variantError={variantError}
-      printMode={printMode}
       onTemplateChange={handleTemplateChange}
       onVariantChange={handleVariantChange}
-      onPrintModeChange={handlePrintModeChange}
     />
   );
 }
@@ -160,10 +148,6 @@ function getInitialTemplateId(): TemplateId {
     "template"
   );
   return getTemplate(requestedTemplate).id;
-}
-
-function getInitialPrintMode(): boolean {
-  return new URLSearchParams(window.location.search).get("print") === "1";
 }
 
 function setUrlParam(param: string, value: string) {

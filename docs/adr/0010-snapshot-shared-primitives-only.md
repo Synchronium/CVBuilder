@@ -1,4 +1,4 @@
-# ADR 0011: Snapshot the Shared Primitives, Not Templates or Components Broadly
+# ADR 0010: Snapshot the Shared Primitives, Not Templates or Components Broadly
 
 ## Status
 
@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-With composable templates (ADR 0009), the shared primitives in
+With composable templates (ADR 0008), the shared primitives in
 `src/templates/_shared/` render semantic `cv-*` classes and a fixed element
 structure that **every template's CSS depends on** by scoping under its root
 (e.g. `.template-divided .cv-positions__item`). Renaming a class or changing an
@@ -14,7 +14,7 @@ element in a primitive does not break the component — it still renders — and
 behavioural tests (which assert roles, text, and behaviour) do not notice. But
 it silently breaks the CSS of all templates at once.
 
-Visual regression (ADR 0010) would catch this, but it is local and on demand,
+Visual regression (ADR 0009) would catch this, but it is local and on demand,
 not part of the fast unit suite. We wanted that contract guarded in the unit
 run too. The question was how much to snapshot.
 
@@ -46,7 +46,7 @@ making "is this change intentional?" obvious rather than something to rubber-sta
 
 Explicitly **not** snapshotted:
 
-- **Whole templates** — covered by visual regression (ADR 0010).
+- **Whole templates** — covered by visual regression (ADR 0009).
 - **`StandardRole`** and other composites — covered by behavioural tests; it is a
   composition, not a leaf contract.
 - **App/UI components** (`CVPage`, switchers, etc.) — covered by behavioural
@@ -55,7 +55,7 @@ Explicitly **not** snapshotted:
 ## Consequences
 
 - A change to a shared primitive's class names or element structure fails fast
-  in the unit suite with a small, readable diff — the contract that ADR 0009's
+  in the unit suite with a small, readable diff — the contract that ADR 0008's
   templates rely on is now pinned.
 - Intended primitive changes require regenerating the snapshot
   (`vitest -u`) and committing it; because the snapshots are small, reviewing

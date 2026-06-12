@@ -13,7 +13,7 @@ const templates = getTemplateOptions();
 /**
  * Structural accessibility checks (jsdom). Catches heading order, landmarks,
  * names/labels, ARIA misuse. Colour-contrast rules need a real browser and are
- * checked separately in the Playwright run (see ADR 0012); they are disabled
+ * checked separately in the Playwright run (see ADR 0011); they are disabled
  * here because jsdom cannot compute rendered colours.
  */
 describe.each(templates)("$label template accessibility", ({ Component }) => {

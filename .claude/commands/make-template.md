@@ -6,7 +6,7 @@ Once you have a description, implement the template.
 
 ## How templates work
 
-Templates are **composed from shared primitives plus their own components** — they are not single hand-written HTML files. See `docs/adr/0009-composable-templates-from-shared-primitives.md` for the full rationale. The key rules:
+Templates are **composed from shared primitives plus their own components** — they are not single hand-written HTML files. See `docs/adr/0008-composable-templates-from-shared-primitives.md` for the full rationale. The key rules:
 
 - A template lives in `src/templates/<name>/` with a `<Name>Template.tsx` entry component, a `<name>.css` file, and as many small template-specific components as it needs (e.g. `<Name>Header.tsx`, `<Name>Role.tsx`, `<Name>Education.tsx`).
 - **Main template files should contain no raw HTML walls** — they read as a composition of named components, like `src/templates/classic/ClassicTemplate.tsx` or `src/templates/divided/DividedTemplate.tsx`. Read both as reference for the pattern (not the design).
@@ -36,9 +36,9 @@ Primitives render **semantic `cv-*` classes** and carry no styling of their own.
   - Sets `font-size: 9.5pt` as the base
   - Tightens spacing (margins, padding, gaps) to aim for **two A4 pages** of content
   - Suppresses detail for condensed roles (`role.condensed === true`) — e.g. hide company description and tech. Target whichever condensed modifier class your role wrapper uses (`.cv-role--condensed` if you used `StandardRole`, or your own `.<name>-role--condensed`).
-  - `.web-only` hiding and `@page { size: A4; margin: 15mm 18mm }` are handled globally in `src/styles/base.css`; add template-specific print overrides only as needed.
-- Use `className="web-only"` on anything that should be hidden in print (e.g. the LinkedIn link is already handled inside `Header.Contact`).
-- **Meet WCAG AA contrast** (see `docs/adr/0012-accessibility-testing.md`). Normal text needs 4.5:1 against its background: use `#6b7280` or darker for muted/secondary text (not `#9ca3af`), never use `opacity` to de-emphasise text (use an explicit AA-compliant grey plus a lighter font weight instead), and if you use an accent colour for text make sure that colour passes AA (keep a brighter shade for decorative bars/borders if needed). The accessibility specs will fail otherwise.
+  - `@page { size: A4; margin: 15mm 18mm }` and hiding the on-screen controls (`.page-tools`) are handled globally in `src/styles/base.css`; add template-specific print overrides only as needed.
+- The app has a single A4-width print-first view (ADR 0005). There is no separate web mode and no `.web-only` content — everything you render is part of the printed output.
+- **Meet WCAG AA contrast** (see `docs/adr/0011-accessibility-testing.md`). Normal text needs 4.5:1 against its background: use `#6b7280` or darker for muted/secondary text (not `#9ca3af`), never use `opacity` to de-emphasise text (use an explicit AA-compliant grey plus a lighter font weight instead), and if you use an accent colour for text make sure that colour passes AA (keep a brighter shade for decorative bars/borders if needed). The accessibility specs will fail otherwise.
 
 ## After implementing
 
@@ -48,7 +48,7 @@ Primitives render **semantic `cv-*` classes** and carry no styling of their own.
    npm run screenshot -- <name> /tmp/cv-screen.png
    npm run screenshot -- <name> /tmp/cv-print.png --print
    ```
-3. **Generate the visual-regression baselines** for the new template (see `docs/adr/0010-local-visual-regression-testing.md`):
+3. **Generate the visual-regression baselines** for the new template (see `docs/adr/0009-local-visual-regression-testing.md`):
    ```
    npm run test:visual:update
    ```

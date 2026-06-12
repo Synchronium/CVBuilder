@@ -1,6 +1,6 @@
 # CV Builder
 
-A code-based CV system that separates career data from presentation. Canonical data lives in `data/base.cv.json`, is validated with Zod, resolved into a `CvViewModel`, and rendered as an interactive React/Vite app with multiple templates, tag filtering, expandable detail, and print/PDF support.
+A code-based CV system that separates career data from presentation. Canonical data lives in `data/base.cv.json`, is validated with Zod, resolved into a `CvViewModel`, and rendered as a React/Vite app with multiple print-ready templates. The app has a single A4-width view designed for print/PDF (see ADR 0005); there is no separate interactive web mode.
 
 ## Stack
 
@@ -34,7 +34,7 @@ data/base.cv.json (or variant)
         ↓
   React template component
         ↓
-  interactive HTML / print / PDF
+  print-ready page / PDF
 ```
 
 Key constraint: **components receive only a fully resolved view model**. They must not merge variants, calculate durations, detect current roles, or read raw JSON.
@@ -66,7 +66,7 @@ Roles are grouped by company. Each company entry has:
 - `positions`: ordered positions with `title`, `start`, `end?` (no `end` = current)
 - `bullets`: evidence points with stable IDs; support `*bold*` inline formatting via `parseInline`
 - `tech`: technology list
-- `interactive`: optional web-only context
+- `interactive`: optional context, and `scope` on positions / `detail` on bullets — all retained in the data but **not currently rendered** (single print-first view, ADR 0005); may be woven into templates later
 - `condensed`: optional boolean — suppresses company description and tech in print for older roles
 
 Company duration is derived from earliest position start → latest position end (or today for current roles). **Never store derived/calculated fields in the data.**
@@ -111,17 +111,17 @@ Options:
 ## Testing
 
 - Unit tests for pure utilities (duration, resolver)
-- Component tests for rendering and user interactions (filtering)
+- Component tests for rendering and user interactions (template/variant switching)
 - Tests live alongside source files (`*.test.ts` / `*.test.tsx`)
 - Test setup in `src/test/setup.ts`
 
-### Markup snapshots — shared primitives only (see ADR 0011)
+### Markup snapshots — shared primitives only (see ADR 0010)
 
 - `src/templates/_shared/primitives.snapshot.test.tsx` snapshots each leaf `_shared/` primitive's rendered markup to pin the `cv-*` class/structure contract that all templates' CSS depends on.
-- Deliberately scoped to leaf primitives — NOT whole templates (visual regression covers those) or composites like `StandardRole` (behavioural tests cover those). Do not broaden this without revisiting ADR 0011; broad snapshots rot.
+- Deliberately scoped to leaf primitives — NOT whole templates (visual regression covers those) or composites like `StandardRole` (behavioural tests cover those). Do not broaden this without revisiting ADR 0010; broad snapshots rot.
 - A failure means a primitive's markup/classes changed. If intentional, regenerate with `npx vitest -u src/templates/_shared/primitives.snapshot.test.tsx` and review the (small) diff before committing.
 
-### Visual regression (local, on demand — see ADR 0010)
+### Visual regression (local, on demand — see ADR 0009)
 
 - Playwright snapshot tests in `visual/`, baselines committed in `visual/__screenshots__/`.
 - Runs against the production build (`vite preview`), one baseline per template per media mode (screen + print).
@@ -129,7 +129,7 @@ Options:
 - If the change is intended, run `npm run test:visual:update` and commit the updated baseline PNGs (that commit *is* the approval).
 - Not in CI: baselines are platform-specific (font/anti-alias rendering). Regenerate locally if they drift on a different machine.
 
-### Accessibility (see ADR 0012)
+### Accessibility (see ADR 0011)
 
 - Two layers: structural checks in the unit suite (`src/templates/templates.a11y.test.tsx`, `jest-axe`, runs in CI, `color-contrast` rule disabled because jsdom can't compute colours) and colour-contrast checks in the browser (`visual/templates.a11y.spec.ts`, `@axe-core/playwright`, runs with `npm run test:visual`, local only).
 - Templates meet WCAG AA. When editing template CSS keep within the contrast standard: muted text at `#6b7280` or darker, never `opacity` for text de-emphasis (use an explicit AA grey + lighter weight), and accent colours that pass AA wherever used as text (Vivid splits `--accent` for decoration vs `--accent-text` for text).

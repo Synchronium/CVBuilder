@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-The app supports base data, calculated durations, current-role detection, inline formatting, and multiple output modes. If components access raw data directly, presentation code accumulates business logic and becomes hard to test and reuse.
+The app supports base data, calculated durations, current-role detection, and inline formatting. If components access raw data directly, presentation code accumulates business logic and becomes hard to test and reuse.
 
 ## Decision
 

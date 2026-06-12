@@ -21,7 +21,6 @@ export function StandardRole({ role }: { role: RoleViewModel }) {
 
       <Role.Description description={role.company.description} />
       <Role.Positions positions={role.positions} />
-      <Role.Context context={role.interactive?.context} />
       <BulletList bullets={role.bullets} />
     </section>
   );

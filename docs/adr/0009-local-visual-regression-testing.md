@@ -1,4 +1,4 @@
-# ADR 0010: Local Visual Regression Testing
+# ADR 0009: Local Visual Regression Testing
 
 ## Status
 
@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-Templates now share rendering primitives (ADR 0009), so a single change to a
+Templates now share rendering primitives (ADR 0008), so a single change to a
 shared component or `cv-*` class can alter every template at once. Unit and
 component tests assert structure and data, but they cannot tell whether a
 template still *looks* right — a CSS change can shift layout or colour without
@@ -44,7 +44,7 @@ generated inside the CI environment (e.g. a pinned container), not locally.
 
 ## Consequences
 
-- Shared-primitive changes (ADR 0009) have an automated safety net for visual
+- Shared-primitive changes (ADR 0008) have an automated safety net for visual
   ripple across all four templates, replacing manual screenshot review.
 - The workflow requires a human in the loop: a VR failure means "pixels
   changed," not "something is wrong." The author inspects the diff image under

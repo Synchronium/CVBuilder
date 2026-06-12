@@ -7,14 +7,7 @@ import { resolveCv } from "../data/resolveCv";
 import { getTemplate, getTemplateOptions } from "../templates/registry";
 import { makeFullCv } from "../data/resolveCv.fixtures";
 
-function TestHarness({
-  initialPrintMode = false,
-  variantError = null
-}: {
-  initialPrintMode?: boolean;
-  variantError?: string | null;
-} = {}) {
-  const [printMode, setPrintMode] = useState(initialPrintMode);
+function TestHarness({ variantError = null }: { variantError?: string | null } = {}) {
   const [templateId, setTemplateId] = useState("classic");
   const cv = resolveCv(makeFullCv(), new Date(Date.UTC(2026, 4, 23)));
   const template = getTemplate(templateId);
@@ -37,10 +30,8 @@ function TestHarness({
       variantNames={[]}
       selectedVariantId={null}
       variantError={variantError}
-      printMode={printMode}
       onTemplateChange={handleTemplateChange}
       onVariantChange={() => {}}
-      onPrintModeChange={setPrintMode}
     />
   );
 }
@@ -73,22 +64,11 @@ describe("CVPage", () => {
     expect(alert).toHaveTextContent('Could not load variant "missing".');
   });
 
-  it("does not show the exit-preview button outside preview mode", () => {
-    render(<TestHarness initialPrintMode={false} />);
+  it("offers a print button", () => {
+    render(<TestHarness />);
 
     expect(
-      screen.queryByRole("button", { name: "Exit preview" })
-    ).not.toBeInTheDocument();
-  });
-
-  it("offers an exit-preview button that leaves print mode", async () => {
-    const user = userEvent.setup();
-    render(<TestHarness initialPrintMode={true} />);
-
-    expect(document.querySelector(".is-print-preview")).toBeInTheDocument();
-
-    await user.click(screen.getByRole("button", { name: "Exit preview" }));
-
-    expect(document.querySelector(".is-print-preview")).not.toBeInTheDocument();
+      screen.getByRole("button", { name: /print/i })
+    ).toBeInTheDocument();
   });
 });

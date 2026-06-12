@@ -5,7 +5,7 @@ import { TEMPLATE_IDS } from "../src/templates/templateIds";
 const templates = TEMPLATE_IDS;
 
 /**
- * Accessibility checks against the real production build (see ADR 0012). Unlike
+ * Accessibility checks against the real production build (see ADR 0011). Unlike
  * the jsdom unit checks, this runs in a real browser, so it covers colour
  * contrast — the rules jsdom cannot evaluate. Runs locally with the visual
  * suite (`npm run test:visual`), not in CI.

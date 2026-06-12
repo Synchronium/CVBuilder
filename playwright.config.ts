@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
- * Visual regression testing — runs locally and on demand (see ADR 0010), not in
+ * Visual regression testing — runs locally and on demand (see ADR 0009), not in
  * CI, because font/anti-alias rendering differs between machines and would make
  * committed baselines brittle across environments.
  *
@@ -23,7 +23,7 @@ export default defineConfig({
   expect: {
     toHaveScreenshot: {
       // Because baselines are generated on the same machine that compares them
-      // (see ADR 0010), renders are near-identical. Keep the tolerance tight so
+      // (see ADR 0009), renders are near-identical. Keep the tolerance tight so
       // small-but-real changes (a recoloured headline, a shifted line) are
       // caught, while still absorbing a few pixels of anti-alias jitter.
       // `threshold` is per-pixel colour sensitivity; `maxDiffPixels` is the

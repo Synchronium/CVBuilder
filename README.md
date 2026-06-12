@@ -123,13 +123,13 @@ npm run test:visual:update  # regenerate baselines after an intended visual chan
 Visual regression runs locally on demand (not in CI). A failure means a
 template's rendering changed: inspect the diff under `test-results/`, then either
 fix the regression or, if the change is intended, run `test:visual:update` and
-commit the new baselines. See [ADR 0010](docs/adr/0010-local-visual-regression-testing.md).
+commit the new baselines. See [ADR 0009](docs/adr/0009-local-visual-regression-testing.md).
 
 ### Continuous integration
 
 [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs `lint`, `build`, and
 `test` on every push to `main` and on pull requests targeting `main`. Visual
-regression is not part of CI (its baselines are platform-specific — see ADR 0010).
+regression is not part of CI (its baselines are platform-specific — see ADR 0009).
 
 ### Data model
 
@@ -141,7 +141,7 @@ Roles are grouped by company. Each role has:
 - `positions` — one or more titles with start/end dates (no `end` = current role)
 - `bullets` — evidence points; support `*bold*` inline formatting
 - `tech` — technology list
-- `interactive` — optional web-only context (hidden in print)
+- `interactive` — optional context (retained in the data but not currently rendered)
 - `condensed` — flag to suppress company description and tech in print for older roles
 
 Company duration is always derived from position dates — never stored manually.
@@ -155,8 +155,8 @@ Company duration is always derived from position dates — never stored manually
 | `src/data/schemas.ts` | Zod schemas |
 | `src/data/resolveCv.ts` | Resolver: raw data → view model |
 | `src/templates/registry.ts` | Template registration |
-| `src/templates/_shared/` | Shared template primitives (see ADR 0009) |
-| `visual/` | Visual-regression specs and committed baselines (see ADR 0010) |
+| `src/templates/_shared/` | Shared template primitives (see ADR 0008) |
+| `visual/` | Visual-regression specs and committed baselines (see ADR 0009) |
 | `scripts/screenshot.ts` | Playwright screenshot utility (`npm run screenshot`) |
 | `docs/adr/` | Architectural decision records |
 
@@ -171,7 +171,7 @@ data/base.cv.json
         ↓
   React template component
         ↓
-  interactive HTML / print / PDF
+  print-ready page / PDF
 ```
 
 Components receive only a fully resolved view model — no raw data, no calculations in templates.
@@ -184,11 +184,10 @@ Components receive only a fully resolved view model — no raw data, no calculat
 | [0002 — Company roles with position history](docs/adr/0002-use-company-roles-with-position-history.md) | Experience is grouped by company, with multiple positions per entry |
 | [0003 — Resolve before rendering](docs/adr/0003-resolve-before-rendering.md) | A resolver transforms raw data into a view model; components do no logic |
 | [0004 — Variants as full copies](docs/adr/0004-variants-as-full-copies.md) | Variants are standalone JSON files, not diff overlays |
-| [0005 — Variants vs output modes](docs/adr/0005-separate-variants-from-output-modes.md) | Content selection and presentation format are independent concerns |
-| [0006 — Runtime preview first](docs/adr/0006-runtime-preview-then-static-artifacts.md) | Start with a live Vite app; static generation comes later |
-| [0007 — Named template registry](docs/adr/0007-named-template-registry.md) | Templates registered by stable ID; switched via URL param |
-| [0008 — Inline bold syntax](docs/adr/0008-inline-bold-syntax.md) | Bullet text uses `*bold*` for emphasis; no other Markdown is supported |
-| [0009 — Composable templates from shared primitives](docs/adr/0009-composable-templates-from-shared-primitives.md) | Templates compose shared `_shared/` primitives styled per template via `cv-*` classes |
-| [0010 — Local visual regression testing](docs/adr/0010-local-visual-regression-testing.md) | Playwright snapshot tests run locally on demand, not in CI |
-| [0011 — Snapshot shared primitives only](docs/adr/0011-snapshot-shared-primitives-only.md) | Markup snapshots cover the `_shared/` primitives' class contract; not whole templates or composites |
-| [0012 — Accessibility testing](docs/adr/0012-accessibility-testing.md) | Structural a11y checks in the unit suite (CI); colour-contrast checks in the browser (local) |
+| [0005 — Single print-first view](docs/adr/0005-single-print-first-view.md) | One A4-width view designed for print/PDF; no separate web mode or web-only content |
+| [0006 — Named template registry](docs/adr/0006-named-template-registry.md) | Templates registered by stable ID; switched via URL param |
+| [0007 — Inline bold syntax](docs/adr/0007-inline-bold-syntax.md) | Bullet text uses `*bold*` for emphasis; no other Markdown is supported |
+| [0008 — Composable templates from shared primitives](docs/adr/0008-composable-templates-from-shared-primitives.md) | Templates compose shared `_shared/` primitives styled per template via `cv-*` classes |
+| [0009 — Local visual regression testing](docs/adr/0009-local-visual-regression-testing.md) | Playwright snapshot tests run locally on demand, not in CI |
+| [0010 — Snapshot shared primitives only](docs/adr/0010-snapshot-shared-primitives-only.md) | Markup snapshots cover the `_shared/` primitives' class contract; not whole templates or composites |
+| [0011 — Accessibility testing](docs/adr/0011-accessibility-testing.md) | Structural a11y checks in the unit suite (CI); colour-contrast checks in the browser (local) |

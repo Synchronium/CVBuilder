@@ -27,13 +27,6 @@
   padding-top: 0;
 }
 
-@media (max-width: 680px) {
-  .profile-header,
-  .cv-section-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media print {
   .template-classic {
     font-size: 9.5pt;
