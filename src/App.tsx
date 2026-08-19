@@ -64,13 +64,12 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    if (variantId === null) {
-      setVariantData(null);
-      setVariantError(null);
-      return;
-    }
+    if (variantId === null) return;
 
     let cancelled = false;
+    // Clearing the previous variant's error before starting a new async load,
+    // not deriving state from props/state; not the pattern this rule targets.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVariantError(null);
     loadVariantData(variantId)
       .then((data) => {
@@ -90,8 +89,11 @@ export function App() {
     };
   }, [variantId]);
 
-  // Variant data (when selected and loaded) overrides the base CV.
-  const activeData = variantData ?? baseData;
+  // Variant data (when selected and loaded) overrides the base CV. Falls back
+  // to base data/no error once the variant is deselected, ignoring any stale
+  // variantData/variantError left over from a previous selection.
+  const activeData = variantId === null ? baseData : (variantData ?? baseData);
+  const activeError = variantId === null ? null : variantError;
   const cv = useMemo(
     () => (activeData == null ? null : resolveCv(activeData)),
     [activeData]
@@ -130,7 +132,7 @@ export function App() {
       selectedTemplateId={template.id}
       variantNames={variantNames}
       selectedVariantId={variantId}
-      variantError={variantError}
+      variantError={activeError}
       onTemplateChange={handleTemplateChange}
       onVariantChange={handleVariantChange}
     />

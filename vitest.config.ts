@@ -9,12 +9,10 @@ export default defineConfig({
     // (they import @playwright/test) and must not be collected by Vitest.
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
     // The WSL filesystem + coverage instrumentation can race vitest's default
-    // threaded worker startup (intermittent "Timeout calling fetch"). A single
-    // forked process serializes suites and runs reliably here.
+    // threaded worker startup (intermittent "Timeout calling fetch"). Disabling
+    // file parallelism serializes suites and runs reliably here.
     pool: "forks",
-    poolOptions: {
-      forks: { singleFork: true }
-    },
+    fileParallelism: false,
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],

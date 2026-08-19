@@ -15,6 +15,11 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./visual",
   fullyParallel: true,
+  // Cap concurrent Chromium workers: the dev container has a fixed, fairly
+  // tight memory budget (unlike a bare host machine), and Playwright's
+  // default (half the CPU count) can launch enough parallel browser
+  // processes to exhaust it.
+  workers: 2,
   forbidOnly: true,
   reporter: "list",
   // Baselines are environment-specific; pin them to one platform so a single
