@@ -1,0 +1,41 @@
+{
+  "name": "CV Builder",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
+
+  // The GitHub CLI, for `gh auth login` and any gh-based workflow from inside the container.
+  // Not in Debian's repositories, so this feature (upstream apt repo) rather than apt-get.
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Persists Claude Code session transcripts/memory and gh's auth token across container
+  // rebuilds. Without these, ~/.claude and ~/.config/gh live on the container's writable
+  // layer and are discarded on every rebuild, forcing a fresh `gh auth login` each time.
+  "mounts": [
+    "source=cvbuilder-claude-home,target=/home/node/.claude,type=volume",
+    "source=cvbuilder-gh-config,target=/home/node/.config/gh,type=volume"
+  ],
+
+  // Both volumes are created and owned by root on first mount, which blocks the node user
+  // from writing to them, so chown before anything else touches them.
+  "postCreateCommand": "sudo mkdir -p /home/node/.claude /home/node/.config/gh && sudo chown -R node:node /home/node/.claude /home/node/.config/gh && npm ci && npx playwright install --with-deps chromium",
+
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite dev server",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-playwright.playwright",
+        "Anthropic.claude-code",
+        "github.vscode-github-actions"
+      ]
+    }
+  }
+}
