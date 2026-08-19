@@ -1,6 +1,6 @@
 {
   "name": "CV Builder",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:24-bookworm",
 
   // The GitHub CLI, for `gh auth login` and any gh-based workflow from inside the container.
   // Not in Debian's repositories, so this feature (upstream apt repo) rather than apt-get.
