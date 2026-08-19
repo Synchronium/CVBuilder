@@ -56,8 +56,6 @@ Key constraint: **components receive only a fully resolved view model**. They mu
 | `data/cover-letters/` | Generated cover letter HTML files (gitignored) |
 | `.claude/commands/` | Claude Code slash command skills |
 | `docs/adr/` | Architectural Decision Records |
-| `PLAN.md` | Broader build plan and phase roadmap |
-| `IDEAS.md` | Content ideas and deferred tasks |
 
 ## Data Model
 
