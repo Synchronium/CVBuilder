@@ -23,8 +23,7 @@
   "forwardPorts": [5173],
   "portsAttributes": {
     "5173": {
-      "label": "Vite dev server",
-      "onAutoForward": "openPreview"
+      "label": "Vite dev server"
     }
   },
   "customizations": {
