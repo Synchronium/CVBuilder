@@ -168,6 +168,15 @@ h3 {
   color: #1d4e4f;
 }
 
+/* Links inside free text inherit the surrounding colour so they stay within
+   the AA contrast the prose already meets (ADR 0011); the underline is what
+   marks them, and it survives printing. */
+.cv-prose a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ═══════════════════════════════════════════════════════════
    SUMMARY / PROSE
 ═══════════════════════════════════════════════════════════ */

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { parseInline } from "./parseInline";
 
 type StrongEl = { type: string; props: { children: string }; key: string | null };
+type LinkEl = { type: string; props: { children: string; href: string }; key: string | null };
 type ParseResult = Array<string | StrongEl>;
 
 function asArray(result: ReactNode): ParseResult {
@@ -85,6 +86,31 @@ describe("parseInline", () => {
     expect((result[1] as StrongEl).type).toBe("strong");
     expect((result[1] as StrongEl).props.children).toBe("one ");
     expect(result[2]).toBe("two* three");
+  });
+
+  it("wraps a link segment in an anchor with its href", () => {
+    const result = asArray(parseInline("I run [Debian.tips](https://debian.tips), a site"));
+    expect(result[0]).toBe("I run ");
+    const link = result[1] as unknown as LinkEl;
+    expect(link.type).toBe("a");
+    expect(link.props.children).toBe("Debian.tips");
+    expect(link.props.href).toBe("https://debian.tips");
+    expect(result[2]).toBe(", a site");
+  });
+
+  it("handles bold and links in the same string", () => {
+    const result = asArray(parseInline("*bold* then [label](https://example.com)"));
+    expect((result[1] as StrongEl).type).toBe("strong");
+    expect((result[3] as unknown as LinkEl).type).toBe("a");
+    expect((result[3] as unknown as LinkEl).props.href).toBe("https://example.com");
+  });
+
+  it("treats bracket text with no url as plain text", () => {
+    expect(parseInline("a [bracketed] aside")).toBe("a [bracketed] aside");
+  });
+
+  it("treats a link with whitespace in the url as plain text", () => {
+    expect(parseInline("[label](not a url)")).toBe("[label](not a url)");
   });
 
   it("assigns a unique key to each element in the output", () => {
